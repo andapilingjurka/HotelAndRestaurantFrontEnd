@@ -47,9 +47,9 @@ const Menu = () => {
       <Container>
         <div style={{ marginBottom: '20px', textAlign: 'center' }}>
         <h1 style={{ fontFamily: 'cursive', fontWeight: 'bold', margin: '10px 0' }}>Menu</h1>
-          <div style={{ display: 'inline-block', position: 'relative' }}>
-            {showSearch ? (
-              <>
+        <div style={{ display: 'inline-block', position: 'relative' }}>
+         {showSearch ? (
+             <>
       <input type="text" placeholder="search by food..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}style={{width: '450px',marginRight: '10px',padding: '10px',backgroundColor:"#fafafa",borderRadius: '8px'
        }}
        />               
@@ -59,8 +59,8 @@ const Menu = () => {
               <BsSearch style={{ position: 'absolute', left: '450px', top: '50%', transform: 'translateY(-50%)', cursor: 'pointer' }} onClick={() => setShowSearch(true)} size={20} />
             )}
             <br></br>
-          </div>
-        </div>
+            </div>
+            </div>
         <Row>
           {filteredMenu.map((item, index) => (
             <React.Fragment key={index}>
@@ -71,8 +71,8 @@ const Menu = () => {
                 <div className="menu-item">
                   <div className="menu-item-image">
                     <img src={item.foodInfo.image} alt={item.foodInfo.name}style={{marginBottom:'6px'}} />
-                    <h6 style={{ fontFamily: 'Helvetica, sans-serif	', fontWeight: 'bold', textAlign: 'center', margin: '5px 0' }}>{item.foodInfo.emri}</h6>
-                    <p style={{ fontFamily:'Trebuchet MS, sans-serif	',textAlign: 'center', margin: '5px 0' }}>{item.foodInfo.detajet}</p>
+                    <h6 style={{ fontFamily: 'Helvetica, sans-serif	', fontWeight: 'bold', textAlign: 'center', margin: '5px 0' }}>{item.foodInfo.name}</h6>
+                    <p style={{ fontFamily:'Trebuchet MS, sans-serif	',textAlign: 'center', margin: '5px 0' }}>{item.foodInfo.description}</p>
                  
                 </div>
                 </div>

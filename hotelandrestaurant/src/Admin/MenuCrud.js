@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import '../components/Menu/menu.css';
 
 function MenuCrud() {
   const [menu, setMenu] = useState([]);

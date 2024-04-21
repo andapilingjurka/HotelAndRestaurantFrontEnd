@@ -170,7 +170,7 @@ function FoodsCrud() {
         height: "auto",
         maxHeight: "150px",
          }}
-        alt="CityPhoto"
+        alt="Food"
          />
         </td>
    
