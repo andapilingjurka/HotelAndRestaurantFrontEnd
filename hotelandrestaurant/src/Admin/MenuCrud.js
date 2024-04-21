@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./menu.css"
 
 function MenuCrud() {
   const [menu, setMenu] = useState([]);
@@ -108,7 +107,7 @@ function MenuCrud() {
               </tr>
             </thead>
             <tbody>
-            {ofertat.map((menu) => (
+            {menu.map((menu) => (
             <tr key={menu.id}>
     <td>{menu.id}</td>
     <td>{menu.foodID}</td>
