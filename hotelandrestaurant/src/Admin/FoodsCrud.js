@@ -120,7 +120,7 @@ function FoodsCrud() {
         <input type="text" id="description" name="description"placeholder="Description" value={description}onChange={(e) => setDescription(e.target.value)}  />
     </div>
   
-    <input type="file"ref={inputFileRef} className="form-control" id="image"onChange={(event) => {setSelectedImage( URL.createObjectURL(event.target.files[0])); setFoto("./images/" + event.target.files[0].name);}}/>
+    <input type="file"ref={inputFileRef} className="form-control" id="image"onChange={(event) => {setSelectedImage( URL.createObjectURL(event.target.files[0])); setImage("./images/" + event.target.files[0].name);}}/>
                   {selectedImage && (
                     <img
                       src={selectedImage}
