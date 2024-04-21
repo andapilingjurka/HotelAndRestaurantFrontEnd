@@ -33,7 +33,7 @@ const Menu = () => {
   const filterMenuByName = () => {
     const filteredItems = menu.filter(item => {
      
-      return searchTerm !== "" && item.foodInfo.emri.toLowerCase().includes(searchTerm.toLowerCase());
+      return searchTerm !== "" && item.foodInfo.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
     setFilteredMenu(filteredItems);
   };
@@ -69,10 +69,10 @@ const Menu = () => {
               )}
               <Col xs={12} md={4}>
                 <div className="menu-item">
-                  <div className="menu-item-image">
-                    <img src={item.foodInfo.image} alt={item.foodInfo.name}style={{marginBottom:'6px'}} />
-                    <h6 style={{ fontFamily: 'Helvetica, sans-serif	', fontWeight: 'bold', textAlign: 'center', margin: '5px 0' }}>{item.foodInfo.name}</h6>
-                    <p style={{ fontFamily:'Trebuchet MS, sans-serif	',textAlign: 'center', margin: '5px 0' }}>{item.foodInfo.description}</p>
+                 <div className="menu-item-image">
+                 <img src={item.foodInfo.image} alt={item.foodInfo.name}style={{marginBottom:'6px'}} />
+                 <h6 style={{ fontFamily: 'Helvetica, sans-serif	', fontWeight: 'bold', textAlign: 'center', margin: '5px 0' }}>{item.foodInfo.name}</h6>
+                 <p style={{ fontFamily:'Trebuchet MS, sans-serif	',textAlign: 'center', margin: '5px 0' }}>{item.foodInfo.description}</p>
                  
                 </div>
                 </div>

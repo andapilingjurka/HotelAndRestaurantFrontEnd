@@ -43,9 +43,6 @@ function FoodsCrud() {
           setDescription("");
           setImage(""); 
           setSelectedImage(null);
-
-
-
         } catch (err) {
           alert(err);
         }
@@ -54,7 +51,6 @@ function FoodsCrud() {
 
  
   const inputFileRef = useRef(null);
-
   async function edit(foods) {
     setId(foods.id);
     setName(foods.name);
@@ -75,8 +71,6 @@ function FoodsCrud() {
         name: name,
         description: description,
         image:image,
-    
-        
       });
       alert("The Food has been successfully edited.");
       Load();
@@ -85,9 +79,6 @@ function FoodsCrud() {
       setDescription("");
       setImage(""); 
       inputFileRef.current.value = "";
-
-
-      
     } catch (err) {
       console.log(`Error: ${err}`, true);
     }
@@ -122,17 +113,7 @@ function FoodsCrud() {
   
     <input type="file"ref={inputFileRef} className="form-control" id="image"onChange={(event) => {setSelectedImage( URL.createObjectURL(event.target.files[0])); setImage("./images/" + event.target.files[0].name);}}/>
                   {selectedImage && (
-                    <img
-                      src={selectedImage}
-                      style={{
-                        maxWidth: "100%",
-                        height: "auto",
-                        maxHeight: "150px",
-                        marginTop: "10px",
-                      }}
-                      alt="SelectedImagePreview"
-                    />
-                  )}
+    <img src={selectedImage}style={{ maxWidth: "100%",height: "auto", maxHeight: "150px", marginTop: "10px",}}alt="SelectedImagePreview" /> )}
         <div>
             <button className="btn btn-success m-4 button" onClick={save}> Save </button>
             <button className="btn btn-warning m-4 button" onClick={update}> Update </button>
@@ -152,10 +133,9 @@ function FoodsCrud() {
        <th scope="col">Description</th>
        <th scope="col">Image</th>
        <th scope="col">Options</th>
-
-       </tr>
-       </thead>
-       <tbody>
+     </tr>
+    </thead>
+    <tbody>
 
         {ushqimet.map((foods) => (
         <tr key={foods.id}>
@@ -163,19 +143,8 @@ function FoodsCrud() {
         <td>{foods.name}</td>
         <td>{foods.description}</td>
         <td>
-        <img
-        src={foods.image}
-        style={{
-        maxWidth: "100%",
-        height: "auto",
-        maxHeight: "150px",
-         }}
-        alt="Food"
-         />
+        <img src={foods.image} style={{maxWidth: "100%",height: "auto",maxHeight: "150px",}}alt="Food"/>
         </td>
-   
-
-            
 
     <td className="d-flex align-items-center button-container ">
     <button type="button" className="btn btn-warning mx-1 button" onClick={() => edit(foods)}> Edit </button>
