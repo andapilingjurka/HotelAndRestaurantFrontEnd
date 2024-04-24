@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
+//import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MenuCrud from "./Admin/MenuCrud";
@@ -9,6 +9,8 @@ import FoodsCrud from "./Admin/FoodsCrud";
 import Dashboard from "./Admin/Dashboard";
 import RoomTypeAdmin from "./Admin/RoomTypeAdmin";
 import RoomAdmin from "./Admin/RoomAdmin";
+import GuestAdmin from "./Admin/GuestAdmin";
+import BookingsAdmin from "./Admin/BookingsAdmin";
 
 function App() {
   return (
@@ -17,9 +19,12 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/rooms" element={<RoomAdmin />} />
         <Route path="/roomtype" element={<RoomTypeAdmin />} />
+        <Route path="/guests" element={<GuestAdmin />} />
+        <Route path="/bookings" element={<BookingsAdmin />} />
         <Route path="/usermenu" element={<Menu />} />
         <Route path="/foods" element={<FoodsCrud />} />
         <Route path="/menu" element={<MenuCrud />} />
+        
       </Routes>
     </Router>
   );

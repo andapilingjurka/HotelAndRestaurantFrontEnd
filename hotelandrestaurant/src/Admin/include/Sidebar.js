@@ -65,15 +65,24 @@ function Sidebar() {
         </Link>
 
         <Link
-          to="/reservations"
+          to="/bookings"
           className={`list-group-item py-2 rounded ${
-            location.pathname === "/reservations" ? "active-link" : ""
+            location.pathname === "/bookings" ? "active-link" : ""
           }`}
         >
           <i className="bi bi-card-checklist fs-5 me-3"></i>
-          <span>Reservations</span>
+          <span>Bookings</span>
         </Link>
 
+        <Link
+          to="/guests"
+          className={`list-group-item py-2 rounded ${
+            location.pathname === "/guests" ? "active-link" : ""
+          }`}
+        >
+          <i className="bi bi-card-checklist fs-5 me-3"></i>
+          <span>Guests</span>
+        </Link>
         <Link
           to="/roomsoffer"
           className={`list-group-item py-2 rounded ${
