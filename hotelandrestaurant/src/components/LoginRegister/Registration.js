@@ -120,7 +120,7 @@ function Registration() {
                   <input
                     type="text"
                     className="form-control form-control-lg bg-light fs-6"
-                    placeholder="Emri"
+                    placeholder="Name"
                     value={FirstName}
                     onChange={(event) => setName(event.target.value)}
                   />
@@ -129,7 +129,7 @@ function Registration() {
                   <input
                     type="text"
                     className="form-control form-control-lg bg-light fs-6"
-                    placeholder="Mbiemri"
+                    placeholder="SurName"
                     value={LastName}
                     onChange={(event) => setlname(event.target.value)}
                   />
@@ -147,7 +147,7 @@ function Registration() {
                   <input
                     type="password"
                     className="form-control form-control-lg bg-light fs-6"
-                    placeholder="Fjalekalimi"
+                    placeholder="Password"
                     value={Password}
                     onChange={(event) => setpassword(event.target.value)}
                   />
@@ -156,7 +156,7 @@ function Registration() {
                   <input
                     type="password"
                     className="form-control form-control-lg bg-light fs-6"
-                    placeholder="Konfirmo Fjalekalimin"
+                    placeholder="Confirm Password"
                     value={confirmPassword}
                     onChange={(event) => setconfirmpassword(event.target.value)}
                   />
@@ -166,12 +166,12 @@ function Registration() {
                     type="submit"
                     className="btn btn-lg btn-primary w-100 fs-6 btn-register"
                   >
-                    Regjistrohuni
+                    Submit
                   </button>
                 </div>
                 <div className="row">
                   <small>
-                    Keni tashmë një llogari?<Link to="/login">Kyqu</Link>
+                    You already have an account?<Link to="/login">Kyqu</Link>
                   </small>
                 </div>
               </form>
