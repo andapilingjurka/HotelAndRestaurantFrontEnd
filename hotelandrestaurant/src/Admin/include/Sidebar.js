@@ -17,9 +17,9 @@ function Sidebar() {
       <hr className="text-dark" />
       <div className="list-group list-group-flush">
         <Link
-          to="/dashboard"
+          to="/"
           className={`list-group-item py-2 rounded ${
-            location.pathname === "/dashboard" ? "active-link" : ""
+            location.pathname === "/" ? "active-link" : ""
           }`}
         >
           <i className="bi bi-bar-chart-line fs-5 me-3"></i>{" "}
@@ -27,9 +27,9 @@ function Sidebar() {
         </Link>
 
         <Link
-          to="/"
+          to="/home"
           className={`list-group-item py-2 rounded ${
-            location.pathname === "/" ? "active-link" : ""
+            location.pathname === "/home" ? "active-link" : ""
           }`}
         >
           <i className="bi bi-house fs-5 me-3"></i> <span>Home</span>
@@ -105,9 +105,9 @@ function Sidebar() {
         </Link>
 
         <Link
-          to="/food"
+          to="/foods"
           className={`list-group-item py-2 rounded ${
-            location.pathname === "/food" ? "active-link" : ""
+            location.pathname === "/foods" ? "active-link" : ""
           }`}
         >
           <GiHamburger className="fs-5 me-3" />
