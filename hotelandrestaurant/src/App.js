@@ -11,6 +11,10 @@ import RoomTypeAdmin from "./Admin/RoomTypeAdmin";
 import RoomAdmin from "./Admin/RoomAdmin";
 import GuestAdmin from "./Admin/GuestAdmin";
 import BookingsAdmin from "./Admin/BookingsAdmin";
+import Users from "./Admin/Users"
+import Roles from "./Admin/Roles"
+import Registration from "./components/LoginRegister/Registration"
+import LoginForm from "./components/LoginRegister/LoginForm"
 
 function App() {
   return (
@@ -24,7 +28,10 @@ function App() {
         <Route path="/usermenu" element={<Menu />} />
         <Route path="/foods" element={<FoodsCrud />} />
         <Route path="/menu" element={<MenuCrud />} />
-        
+        <Route path="/login" element={<LoginForm />} />
+          <Route path="/role" element={<Roles />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/users" element={<Users />} />
       </Routes>
     </Router>
   );
