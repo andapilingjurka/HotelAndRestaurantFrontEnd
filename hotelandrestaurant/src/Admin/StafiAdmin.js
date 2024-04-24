@@ -32,62 +32,92 @@ function StafiAdmin() {
       console.error("Error loading stafi:", error);
     }
   }
-
+  
   async function save(event) {
-
-    const stafiData = {
-  id: 0, 
-  name: emri,
-  surname: mbiemri,
-  image: image, 
-  nrPhone: nrTelefonit, 
-  cualification: kualifikimi,
-  rewardBonusId: 1, 
-  rewardBonus: {
-    name: 'Performance Bonus',
-    amount: 100.00,
-    reason: 'Exceeded targets',
-    date: '2024-04-24T00:00:00' 
-  }
-};
-fetch('https://localhost:7264/api/Staff/Add', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(stafiData)
-})
-.then(response => {
-  if (response.ok) {
-    return response.json();
-  } else {
-    throw new Error('POST request failed');
-  }
-})
-.then(data => {
-  console.log('Success:', data);
-  clearForm();
-      loadStafi();
-})
-.catch(error => {
-  console.error('Error:', error);
-});
-
-   /* event.preventDefault();
+    event.preventDefault();
     try {
-      await axios.post('https://localhost:7010/api/Staff/Add', {
+      await axios.post("https://localhost:7264/api/Staff/Add", {
         name: emri,
         surname: mbiemri,
-        Image: image,
-        nrPhone: nrTelefonit,
+        image: image, 
+        nrPhone: nrTelefonit, 
         cualification: kualifikimi,
+        rewardBonusId: 1, 
+        rewardBonus: {
+          name: 'Performance Bonus',
+          amount: 100.00,
+          reason: 'Exceeded targets',
+          date: '2024-04-24T00:00:00' 
+        }
       });
-      clearForm();
-      loadStafi();
-    } catch (error) {
-      console.error("Error saving stafi:", error);
-    }*/ 
+      //showAndHideAlert("Guest has been successfully registered!");
+      setId("");
+      setEmri("");
+      setMbiemri("");
+      setImage("");
+      setNrTelefonit("");
+      setKualifikimi("");
+      
+      
+    } catch (err) {
+    //  console.error('Error:', error);
   }
+  }
+//   async function save(event) {
+
+//     const stafiData = {
+//   id: 0, 
+//   name: emri,
+//   surname: mbiemri,
+//   image: image, 
+//   nrPhone: nrTelefonit, 
+//   cualification: kualifikimi,
+//   rewardBonusId: 1, 
+//   rewardBonus: {
+//     name: 'Performance Bonus',
+//     amount: 100.00,
+//     reason: 'Exceeded targets',
+//     date: '2024-04-24T00:00:00' 
+//   }
+// };
+// fetch('https://localhost:7264/api/Staff/Add', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify(stafiData)
+// })
+// .then(response => {
+//   if (response.ok) {
+//     return response.json();
+//   } else {
+//     throw new Error('POST request failed');
+//   }
+// })
+// .then(data => {
+//   console.log('Success:', data);
+//   clearForm();
+//       loadStafi();
+// })
+// .catch(error => {
+// 
+// });
+
+  //  event.preventDefault();
+  //   try {
+  //     await axios.post('https://localhost:7010/api/Staff/Add', {
+  //       name: emri,
+  //       surname: mbiemri,
+  //       Image: image,
+  //       nrPhone: nrTelefonit,
+  //       cualification: kualifikimi,
+  //     });
+  //     clearForm();
+  //     loadStafi();
+  //   } catch (error) {
+  //     console.error("Error saving stafi:", error);
+  //   }
+  // }
 
   async function deleteStafi(stafiId) {
     try {
@@ -241,7 +271,7 @@ fetch('https://localhost:7264/api/Staff/Add', {
       </div>
     </div>
   );
-}
 
+}
 export default StafiAdmin;
 

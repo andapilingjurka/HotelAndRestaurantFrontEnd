@@ -27,7 +27,7 @@ function RewardBonusAdmin() {
   async function loadRewardBonuses() {
     try {
       const result = await axios.get(
-        "https://localhost:7010/api/RewardBonus/GetAllList"
+        "https://localhost:7264/api/RewardBonus/GetAllList"
       );
       setRewardBonuses(result.data);
     } catch (err) {
@@ -38,7 +38,7 @@ function RewardBonusAdmin() {
   async function save(event) {
     event.preventDefault();
     try {
-      await axios.post("https://localhost:7010/api/RewardBonus/Add", {
+      await axios.post("https://localhost:7264/api/RewardBonus/Add", {
         name: name,
         amount: amount,
         reason: reason,
@@ -72,7 +72,7 @@ function RewardBonusAdmin() {
     
     try {
       await axios.delete(
-        `https://localhost:7010/api/RewardBonus/Delete/${id}`
+        `https://localhost:7264/api/RewardBonus/Delete/${id}`
       );
       showAndHideAlert("The reward bonus has been successfully deleted!");
       clearForm();
@@ -87,7 +87,7 @@ function RewardBonusAdmin() {
     try {
       const rewardBonus = rewardBonuses.find((rb) => rb.id === id);
       await axios.put(
-        `https://localhost:7010/api/RewardBonus/Update/${rewardBonus.id}`,
+        `https://localhost:7264/api/RewardBonus/Update/${rewardBonus.id}`,
         {
           id: rewardBonus.id,
           name: name,
