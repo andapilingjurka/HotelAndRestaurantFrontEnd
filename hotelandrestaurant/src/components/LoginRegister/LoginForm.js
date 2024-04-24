@@ -39,7 +39,7 @@ function LoginForm() {
       if (role === "admin") {
         navigate("/dashboard");
       } else if (role === "client") {
-        navigate("/");
+        navigate("/usermenu");
       }
     } catch (error) {
       console.error(error.response.data);
