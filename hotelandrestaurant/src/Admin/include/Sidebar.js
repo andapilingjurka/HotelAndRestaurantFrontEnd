@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburger } from "react-icons/gi";
-import { FaBed } from "react-icons/fa";
+import { FaBed, FaUser, FaUserPlus  } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 
 import "../style.css";
@@ -41,7 +41,15 @@ function Sidebar() {
             location.pathname === "/users" ? "active-link" : ""
           }`}
         >
-          <i className="bi bi-people fs-5 me-3"></i> <span>Users</span>
+           <FaUser className="fs-5 me-3" /><span>Users</span>
+        </Link>
+        <Link
+          to="/role"
+          className={`list-group-item py-2 ${
+            location.pathname === "/role" ? "active-link" : ""
+          }`}
+        >
+          <FaUserPlus   className="fs-5 me-3" /> <span>Roles</span>
         </Link>
 
         <Link
@@ -143,6 +151,9 @@ function Sidebar() {
         >
           <i className="bi bi-power fs-5 me-3"></i> <span>Logout</span>
         </Link>
+
+        
+      
       </div>
     </div>
   );
