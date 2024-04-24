@@ -94,7 +94,7 @@ function LoginForm() {
               <Form.Group className="mb-3">
                 <Form.Control
                   type="password"
-                  placeholder="Fjalekalimi"
+                  placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="form-control form-control-lg bg-light fs-6"
@@ -112,7 +112,7 @@ function LoginForm() {
               </div>
               <div className="row">
                 <small>
-                  Nuk keni një llogari?
+                  You don't have an account?
                   <Link to="/registration"> Regjistrohuni këtu</Link>
                 </small>
               </div>
