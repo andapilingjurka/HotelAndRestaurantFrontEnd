@@ -240,7 +240,7 @@ function GuestAdmin() {
                       <tr key={guest.id}>
                         <td>{guest.id}</td>
                         <td>{guest.name}</td>
-                        <td>{guest.lastname}</td>
+                        <td>{guest.lastName}</td>
                         <td>{guest.email}</td>
                         <td>{guest.phone}</td>
 

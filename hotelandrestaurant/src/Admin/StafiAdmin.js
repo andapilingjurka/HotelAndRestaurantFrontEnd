@@ -25,7 +25,7 @@ function StafiAdmin() {
 
   async function loadStafi() {
     try {
-      const response = await axios.get('https://localhost:7010/api/Staff/GetAllList');
+      const response = await axios.get('https://localhost:7264/api/Staff/GetAllList');
       setStafi(response.data);
       console.log(stafi)
     } catch (error) {
@@ -50,7 +50,7 @@ function StafiAdmin() {
     date: '2024-04-24T00:00:00' 
   }
 };
-fetch('https://localhost:7010/api/Staff/Add', {
+fetch('https://localhost:7264/api/Staff/Add', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ fetch('https://localhost:7010/api/Staff/Add', {
 
   async function deleteStafi(stafiId) {
     try {
-      await axios.delete(`https://localhost:7010/api/Staff/Delete/${stafiId}`);
+      await axios.delete(`https://localhost:7264/api/Staff/Delete/${stafiId}`);
       loadStafi();
     } catch (error) {
       console.error("Error deleting stafi:", error);
@@ -110,7 +110,7 @@ fetch('https://localhost:7010/api/Staff/Add', {
   async function update(event) {
     event.preventDefault();
     try {
-      await axios.put('https://localhost:7010/api/Staff/Update/', {
+      await axios.put('https://localhost:7264/api/Staff/Update/', {
         stafiId: id,
         emri: emri,
         mbiemri: mbiemri,

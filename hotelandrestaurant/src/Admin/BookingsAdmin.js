@@ -38,7 +38,7 @@ function BookingsAdmin() {
   async function loadRooms() {
     try {
       const result = await axios.get(
-        "https://localhost:7285/api/Room/GetAllList"
+        "https://localhost:7264/api/Room/GetAllList"
       );
       setRooms(result.data);
     } catch (err) {
@@ -48,7 +48,7 @@ function BookingsAdmin() {
   async function loadGuests() {
     try {
       const result = await axios.get(
-        "https://localhost:7285/api/Guests/GetAllList"
+        "https://localhost:7264/api/Guests/GetAllList"
       );
       setGuests(result.data);
     } catch (err) {
@@ -59,7 +59,7 @@ function BookingsAdmin() {
   async function loadBookings() {
     try {
       const result = await axios.get(
-        "https://localhost:7285/api/Bookings/GetAllList"
+        "https://localhost:7264/api/Bookings/GetAllList"
       );
       setBookings(result.data);
     } catch (err) {
@@ -383,8 +383,8 @@ function BookingsAdmin() {
                   {bookings.map((booking) => (
                     <tr key={booking.id}>
                       <td>{booking.id}</td>
-                      <td>{booking.emriPasagjerit}</td>
-                      <td>{booking.mbiemriPasagjerit}</td>
+                      <td>{booking.price}</td>
+                      <td>{booking.currency}</td>
 
                       <td>{booking.checkInDate}</td>
                       <td>{booking.checkOutDate}</td>
