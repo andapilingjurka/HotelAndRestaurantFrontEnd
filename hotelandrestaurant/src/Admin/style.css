@@ -1,0 +1,151 @@
+/*Sidebar*/
+.list-group a:hover{
+    background-color: #3f4345;
+    color: white;
+    cursor: pointer;
+}
+
+.active-link {
+    background-color: #888b8e; 
+    color: white;
+    font-weight: bold;
+  }
+
+  .logo{
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .filter{
+    border-radius: 5px;
+    padding: 7px 5px;
+    margin-left: 15px;
+  }
+
+/* For alert message */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    animation: fadeInOut 3s forwards;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .alert-success {
+    background-color: white; /* Green color for success */
+    color: black;
+    font-weight: 500;
+    border-bottom:7px solid green;
+  }
+  
+  .alert-danger {
+    background-color: #e35c5c; /* Red color for error */
+    color: white;
+    border: #e35c5c;
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    10% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    90% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+/* table in dashboard */
+.description{
+    color: white;
+    text-align: center;
+}
+
+.label{
+    color: white;
+}
+
+.button{
+    font-weight: bold;
+    cursor: pointer;
+   
+}
+.table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  }
+  
+  .table th,
+  .table td {
+    padding: 10px;
+  }
+  
+  .table th {
+    background-color: lightgray; 
+    padding: 15px 0;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+  }
+  
+  .calendar {
+    width: 100%;
+  }
+  
+  .day {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    margin: 5px auto;
+  }
+  
+  .day:hover {
+    background-color: #ddd;
+  }
+
+  /*Feedback*/
+  .feedback{
+    margin-top: 35px;
+    text-align: center;
+  }
+
+  .footer-border{
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 80px 0;
+  }
+
+  .feedback-h2{
+    color:white;
+    padding-bottom: 40px;
+  }
+
+  .feedback-p{
+    color: white;
+    font-size: 17px;
+  }
