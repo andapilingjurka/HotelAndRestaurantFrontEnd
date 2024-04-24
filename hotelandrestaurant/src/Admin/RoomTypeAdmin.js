@@ -24,7 +24,7 @@ function RoomTypeAdmin() {
   async function Load() {
     try {
       const result = await axios.get(
-        "https://localhost:7010/api/RoomType/GetAllList"
+        "https://localhost:7264/api/RoomType/GetAllList"
       );
       setRoomType(result.data);
       console.log(result.data);
@@ -36,7 +36,7 @@ function RoomTypeAdmin() {
   async function save(event) {
     event.preventDefault();
     try {
-      await axios.post("https://localhost:7010/api/RoomType/Add", {
+      await axios.post("https://localhost:7264/api/RoomType/Add", {
         roomName: roomName,
       });
       showAndHideAlert("The room type has been successfully registered!");
@@ -55,7 +55,7 @@ function RoomTypeAdmin() {
 
   async function deleteRoomType(id) {
     try {
-      await axios.delete(`https://localhost:7010/api/RoomType/Delete?Id=${id}`);
+      await axios.delete(`https://localhost:7264/api/RoomType/Delete?Id=${id}`);
       showAndHideAlert("The room type has been successfully deleted!");
       setId("");
       setRoomName("");
@@ -70,7 +70,7 @@ function RoomTypeAdmin() {
     try {
       const roomtype = roomtypes.find((p) => p.id === id);
       await axios.put(
-        `https://localhost:7010/api/RoomType/Update/${roomtype.id}`,
+        `https://localhost:7264/api/RoomType/Update/${roomtype.id}`,
         {
           id: roomtype.id,
           roomName: roomName,

@@ -41,7 +41,7 @@ function RoomAdmin() {
   async function loadRoomTypes() {
     try {
       const result = await axios.get(
-        "https://localhost:7010/api/RoomType/GetAllList"
+        "https://localhost:7264/api/RoomType/GetAllList"
       );
       setRoomTypes(result.data);
     } catch (err) {
@@ -52,7 +52,7 @@ function RoomAdmin() {
   async function loadRooms() {
     try {
       const result = await axios.get(
-        "https://localhost:7010/api/Room/GetAllList"
+        "https://localhost:7264/api/Room/GetAllList"
       );
       // Sorto listën e dhomave sipas numrit të dhomës (RoomNumber)
       const sortedRooms = result.data.sort((a, b) =>
@@ -69,7 +69,7 @@ function RoomAdmin() {
   async function save(event) {
     event.preventDefault();
     try {
-      await axios.post("https://localhost:7010/api/Room/Add", {
+      await axios.post("https://localhost:7264/api/Room/Add", {
         roomNumber: roomNumber,
         status: status,
         image: image,
@@ -111,7 +111,7 @@ function RoomAdmin() {
 
   async function deleteRooms(roomId) {
     try {
-      await axios.delete(`https://localhost:7010/api/Room/Delete?Id=${roomId}`);
+      await axios.delete(`https://localhost:7264/api/Room/Delete?Id=${roomId}`);
       showAndHideAlert("The room has been successfully deleted!");
       clearForm();
       loadRooms();
@@ -124,7 +124,7 @@ function RoomAdmin() {
     event.preventDefault();
     try {
       const room = rooms.find((p) => p.id === id);
-      await axios.put(`https://localhost:7010/api/Room/Update/${room.id}`, {
+      await axios.put(`https://localhost:7264/api/Room/Update/${room.id}`, {
         id: room.id,
         roomNumber: roomNumber,
         status: status,
@@ -152,11 +152,11 @@ function RoomAdmin() {
     try {
       let result;
       if (roomName === "All") {
-        result = await axios.get("https://localhost:7010/api/Room/GetAllList");
+        result = await axios.get("https://localhost:7264/api/Room/GetAllList");
         setRooms(result.data); // Përditësoni drejtpërdrejt listën e dhomave
       } else {
         result = await axios.get(
-          `https://localhost:7010/api/Room/GetRoomsByRoomType?roomTypeName=${roomName}`
+          `https://localhost:7264/api/Room/GetRoomsByRoomType?roomTypeName=${roomName}`
         );
         setRooms(result.data);
       }
@@ -255,7 +255,7 @@ function RoomAdmin() {
                       setSelectedImage(
                         URL.createObjectURL(event.target.files[0])
                       );
-                      setImage("./images/rooms" + event.target.files[0].name);
+                      setImage("./images/rooms/" + event.target.files[0].name);
                     }}
                   />
                   {selectedImage && (
