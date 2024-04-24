@@ -26,23 +26,8 @@ function Sidebar() {
           <span>Dashboard</span>
         </Link>
 
-        <Link
-          to="/home"
-          className={`list-group-item py-2 rounded ${
-            location.pathname === "/home" ? "active-link" : ""
-          }`}
-        >
-          <i className="bi bi-house fs-5 me-3"></i> <span>Home</span>
-        </Link>
+        
 
-        <Link
-          to="/users"
-          className={`list-group-item py-2 rounded ${
-            location.pathname === "/users" ? "active-link" : ""
-          }`}
-        >
-           <FaUser className="fs-5 me-3" /><span>Users</span>
-        </Link>
         <Link
           to="/role"
           className={`list-group-item py-2 ${
@@ -51,7 +36,14 @@ function Sidebar() {
         >
           <FaUserPlus   className="fs-5 me-3" /> <span>Roles</span>
         </Link>
-
+        <Link
+          to="/users"
+          className={`list-group-item py-2 rounded ${
+            location.pathname === "/users" ? "active-link" : ""
+          }`}
+        >
+           <FaUser className="fs-5 me-3" /><span>Users</span>
+        </Link>
 
 
         <Link
@@ -62,6 +54,36 @@ function Sidebar() {
         >
           <FaBed className="fs-5 me-3" />
           <span>Rooms</span>
+        </Link>
+
+        <Link
+          to="/home"
+          className={`list-group-item py-2 rounded ${
+            location.pathname === "/home" ? "active-link" : ""
+          }`}
+        >
+          <i className="bi bi-house fs-5 me-3"></i> <span>Home</span>
+        </Link>
+
+       
+        <Link
+          to="/stafi"
+          className={`list-group-item py-2 rounded ${
+            location.pathname === "/stafi" ? "active-link" : ""
+          }`}
+        >
+          <i className="bi bi-people fs-5 me-3"></i> <span>Staff</span>
+        </Link>
+
+
+        
+        <Link
+          to="/rewardBonus"
+          className={`list-group-item py-2 rounded ${
+            location.pathname === "/rewardBonus" ? "active-link" : ""
+          }`}
+        >
+          <i className="bi bi-people fs-5 me-3"></i> <span>RewardBonus</span>
         </Link>
 
         <Link

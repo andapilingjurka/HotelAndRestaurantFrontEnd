@@ -13,6 +13,8 @@ import GuestAdmin from "./Admin/GuestAdmin";
 import BookingsAdmin from "./Admin/BookingsAdmin";
 import Users from "./Admin/Users"
 import Roles from "./Admin/Roles"
+import StafiAdmin from "./Admin/StafiAdmin";
+import RewardBonusAdmin from "./Admin/RewardBonusAdmin";
 import Registration from "./components/LoginRegister/Registration"
 import LoginForm from "./components/LoginRegister/LoginForm"
 
@@ -32,6 +34,8 @@ function App() {
           <Route path="/role" element={<Roles />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/stafi" element={<StafiAdmin />} />
+        <Route path="/rewardBonus" element={<RewardBonusAdmin />} />
       </Routes>
     </Router>
   );
