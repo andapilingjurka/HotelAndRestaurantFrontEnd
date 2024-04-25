@@ -3,9 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./register.css";
-import register from "./register.jpg";
-
-
+import register from "./hotel.png";
 
 const isEmailValid = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -60,7 +58,7 @@ function Registration() {
           Email: Email.trim(),
           Password: Password.trim(),
           LastName: LastName.trim(),
-          roleId: 2,
+          roleId: 1,
         }
       );
 
@@ -81,7 +79,6 @@ function Registration() {
 
   return (
     <div>
-     
       <div className="container d-flex justify-content-center align-items-center min-vh-100 register">
         <div className="row border rounded-5 p-3 bg-white shadow box-area">
           <div
