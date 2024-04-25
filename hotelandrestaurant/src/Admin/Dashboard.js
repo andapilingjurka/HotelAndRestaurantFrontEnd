@@ -74,15 +74,6 @@ function Dashboard() {
                     <i className="bi bi-card-checklist p-3 fs-1"></i>
                   </div>
                 </div>
-                <div className="col-xl-3 p-1">
-                  <div className="p-3 bg-white shadow-lg d-flex justify-content-around align-items-center rounded">
-                    <div>
-                      <h3 className="fs-2">289</h3>{" "}
-                      <p className="fs-5">Messages</p>
-                    </div>
-                    <i className="bi bi-chat-dots p-3 fs-1"></i>
-                  </div>
-                </div>
               </div>
 
               <div className="row ">
