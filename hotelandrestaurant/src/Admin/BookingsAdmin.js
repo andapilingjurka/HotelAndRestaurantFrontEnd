@@ -7,8 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 function BookingsAdmin() {
   const [toggle, setToggle] = useState(true);
-//   const token = localStorage.getItem("token");
-//   const decodedToken = decodeToken(token);
+  //   const token = localStorage.getItem("token");
+  //   const decodedToken = decodeToken(token);
   const navigate = useNavigate();
   const Toggle = () => {
     setToggle(!toggle);
@@ -88,9 +88,9 @@ function BookingsAdmin() {
     try {
       await axios.post("https://localhost:7264/api/Bookings/Add", {
         price: price,
-        currency:currency,
+        currency: currency,
         roomId: roomId,
-        guestId:guestId,
+        guestId: guestId,
         checkInDate: checkInDate,
         checkOutDate: checkOutDate,
       });
@@ -102,7 +102,6 @@ function BookingsAdmin() {
       setCheckOutDate("");
       setRoomId("");
       setGuestId("");
-      
     } catch (err) {
       showAndHideAlert(`Error: ${err}`, true);
     }
@@ -113,12 +112,8 @@ function BookingsAdmin() {
     setCurrency(booking.currency);
     setRoomId(booking.roomId);
     setGuestId(booking.guestId);
-    setCheckInDate(
-      new Date(booking.checkInDate).toISOString().split("T")[0]
-    );
-    setCheckOutDate(
-      new Date(booking.checkOutDate).toISOString().split("T")[0]
-    );
+    setCheckInDate(new Date(booking.checkInDate).toISOString().split("T")[0]);
+    setCheckOutDate(new Date(booking.checkOutDate).toISOString().split("T")[0]);
   }
 
   async function deleteBooking(bookingId) {
@@ -144,9 +139,9 @@ function BookingsAdmin() {
         {
           id: booking.id,
           price: price,
-          currency:currency,
+          currency: currency,
           roomId: roomId,
-          guestId:guestId,
+          guestId: guestId,
           checkInDate: checkInDate,
           checkOutDate: checkOutDate,
         }
@@ -167,29 +162,29 @@ function BookingsAdmin() {
       setIsAlertVisible(false);
     }, 3000); // Hide the alert after 3 seconds
   }
-//   // Kushti per kontrollimin nese eshte admin
-//   if (!decodedToken || decodedToken.role !== "admin") {
-//     return (
-//       <div className="container">
-//         <h1
-//           style={{
-//             textAlign: "center",
-//             fontFamily: "Times New Roman, serif",
-//             fontWeight: "bold",
-//             position: "relative",
-//             marginTop: "250px",
-//           }}
-//         >
-//           Ju nuk keni akses në këtë faqe!
-//         </h1>
-//       </div>
-//     );
-//   }
+  //   // Kushti per kontrollimin nese eshte admin
+  //   if (!decodedToken || decodedToken.role !== "admin") {
+  //     return (
+  //       <div className="container">
+  //         <h1
+  //           style={{
+  //             textAlign: "center",
+  //             fontFamily: "Times New Roman, serif",
+  //             fontWeight: "bold",
+  //             position: "relative",
+  //             marginTop: "250px",
+  //           }}
+  //         >
+  //           Ju nuk keni akses në këtë faqe!
+  //         </h1>
+  //       </div>
+  //     );
+  //   }
   return (
     <div
       className="container-fluid"
       style={{
-        backgroundColor: "#004687",
+        backgroundColor: "#3f4345",
         minHeight: "100vh",
         backgroundSize: "cover",
       }}
@@ -220,20 +215,20 @@ function BookingsAdmin() {
                       setId(event.target.value);
                     }}
                   />
-                  </div>
-                  <div className="form-group">
-                    <label className="label">Price</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="price"
-                      value={price}
-                      onChange={(event) => {
-                        setPrice(event.target.value);
-                      }}
-                    />
-                  </div>
-                  <div className="form-group">
+                </div>
+                <div className="form-group">
+                  <label className="label">Price</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="price"
+                    value={price}
+                    onChange={(event) => {
+                      setPrice(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
                   <label className="label mr-4" style={{ marginRight: "10px" }}>
                     Currency
                   </label>
@@ -270,22 +265,20 @@ function BookingsAdmin() {
                     </label>
                   </div>
                 </div>
-            
 
-             
-                  <div className="form-group">
-                    <label className="label">CheckIn Date</label>
-                    <input
-                      type="date"
-                      className="form-control"
-                      id="checkInDate"
-                      value={checkInDate}
-                      onChange={(event) => {
-                        setCheckInDate(event.target.value);
-                      }}
-                    />
-                  </div>
-                
+                <div className="form-group">
+                  <label className="label">CheckIn Date</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="checkInDate"
+                    value={checkInDate}
+                    onChange={(event) => {
+                      setCheckInDate(event.target.value);
+                    }}
+                  />
+                </div>
+
                 <div className="form-group">
                   <label className="label">CheckOut Date</label>
                   <input
@@ -345,7 +338,7 @@ function BookingsAdmin() {
                   </select>
                 </div>
                 <div>
-                <button className="btn btn-success m-4 button" onClick={save}>
+                  <button className="btn btn-success m-4 button" onClick={save}>
                     Save
                   </button>
                   <button
@@ -392,11 +385,9 @@ function BookingsAdmin() {
                       <td>{booking.id}</td>
                       <td>{booking.emriPasagjerit}</td>
                       <td>{booking.mbiemriPasagjerit}</td>
-                  
+
                       <td>{booking.checkInDate}</td>
-                      <td>
-                        {booking.checkOutDate }
-                      </td>
+                      <td>{booking.checkOutDate}</td>
                       <td>{booking.roomId}</td>
                       <td>{booking.guestId}</td>
                       <td>

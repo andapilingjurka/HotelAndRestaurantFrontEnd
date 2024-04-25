@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburger } from "react-icons/gi";
-import { FaBed, FaUser, FaUserPlus  } from "react-icons/fa";
+import { FaBed, FaUser, FaUserPlus } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 
 import "../style.css";
@@ -26,15 +26,13 @@ function Sidebar() {
           <span>Dashboard</span>
         </Link>
 
-        
-
         <Link
           to="/role"
           className={`list-group-item py-2 ${
             location.pathname === "/role" ? "active-link" : ""
           }`}
         >
-          <FaUserPlus   className="fs-5 me-3" /> <span>Roles</span>
+          <FaUserPlus className="fs-5 me-3" /> <span>Roles</span>
         </Link>
         <Link
           to="/users"
@@ -42,9 +40,9 @@ function Sidebar() {
             location.pathname === "/users" ? "active-link" : ""
           }`}
         >
-           <FaUser className="fs-5 me-3" /><span>Users</span>
+          <FaUser className="fs-5 me-3" />
+          <span>Users</span>
         </Link>
-
 
         <Link
           to="/rooms"
@@ -65,7 +63,6 @@ function Sidebar() {
           <i className="bi bi-house fs-5 me-3"></i> <span>Home</span>
         </Link>
 
-       
         <Link
           to="/stafi"
           className={`list-group-item py-2 rounded ${
@@ -75,8 +72,6 @@ function Sidebar() {
           <i className="bi bi-people fs-5 me-3"></i> <span>Staff</span>
         </Link>
 
-
-        
         <Link
           to="/rewardBonus"
           className={`list-group-item py-2 rounded ${
@@ -115,25 +110,6 @@ function Sidebar() {
           <i className="bi bi-card-checklist fs-5 me-3"></i>
           <span>Guests</span>
         </Link>
-        <Link
-          to="/roomsoffer"
-          className={`list-group-item py-2 rounded ${
-            location.pathname === "/roomsoffer" ? "active-link" : ""
-          }`}
-        >
-          <FaBed className="fs-5 me-3" />
-          <span>Rooms Offer</span>
-        </Link>
-
-        <Link
-          to="/reservationsoffer"
-          className={`list-group-item py-2 rounded ${
-            location.pathname === "/reservationsoffer" ? "active-link" : ""
-          }`}
-        >
-          <i className="bi bi-card-checklist fs-5 me-3"></i>
-          <span>Reservations Offer</span>
-        </Link>
 
         <Link
           to="/menu"
@@ -157,24 +133,6 @@ function Sidebar() {
 
         <br />
         <br />
-
-        <Link
-          to="#"
-          className={`list-group-item py-2 rounded ${
-            location.pathname === "#" ? "active-link" : ""
-          }`}
-        >
-          <i className="bi bi-gear fs-5 me-3"></i> <span>Settings</span>
-        </Link>
-
-        <Link
-          to="/logout"
-          className={`list-group-item py-2 rounded ${
-            location.pathname === "/logout" ? "active-link" : ""
-          }`}
-        >
-          <i className="bi bi-power fs-5 me-3"></i> <span>Logout</span>
-        </Link>
       </div>
     </div>
   );
