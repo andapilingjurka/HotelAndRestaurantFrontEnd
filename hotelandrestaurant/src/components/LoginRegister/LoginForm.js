@@ -6,7 +6,7 @@ import { decodeToken } from "./jwtUtils";
 import { Form, Button, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
-import login from "./login.jpg";
+import login from "./hotel.png";
 
 // import MyNavbar from "../include/Navbar";
 
