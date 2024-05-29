@@ -55,13 +55,12 @@ function Sidebar() {
         </Link>
 
         <Link
-          to="/roomtype"
+          to="/home"
           className={`list-group-item py-2 rounded ${
-            location.pathname === "/roomtype" ? "active-link" : ""
+            location.pathname === "/home" ? "active-link" : ""
           }`}
         >
-          <FaBed className="fs-5 me-3" />
-          <span>Room Type</span>
+          <i className="bi bi-house fs-5 me-3"></i> <span>Home</span>
         </Link>
 
         <Link
@@ -80,6 +79,16 @@ function Sidebar() {
           }`}
         >
           <i className="bi bi-people fs-5 me-3"></i> <span>RewardBonus</span>
+        </Link>
+
+        <Link
+          to="/roomtype"
+          className={`list-group-item py-2 rounded ${
+            location.pathname === "/roomtype" ? "active-link" : ""
+          }`}
+        >
+          <FaBed className="fs-5 me-3" />
+          <span>Room Type</span>
         </Link>
 
         <Link
