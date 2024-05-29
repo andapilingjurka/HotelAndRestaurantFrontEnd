@@ -1,0 +1,93 @@
+.room__item {
+  border: 1px solid #7c8a9736;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.room__item-info span i {
+  color: #f9a826;
+  font-size: 1.1rem;
+}
+
+.room__item-btn {
+  border-radius: 0;
+  border: none;
+  outline: none;
+  background: #000d6b;
+  padding: 8px 0px;
+}
+
+.room__item-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.room__item-btn a:hover {
+  color: #fff;
+}
+.room__btn-details {
+  background: #f9a826;
+  border-radius: 0px 4px 4px 0px;
+}
+
+.room__btn-rent {
+  border-radius: 4px 0px 0px 4px;
+}
+
+.room__item-content h4 {
+  font-size: 1.8rem;
+}
+
+.room__item-content h6 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 992px) {
+  .room__item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+
+  .room__item h6 {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .room__item-info {
+    flex-wrap: wrap;
+  }
+
+  .room__item-info span {
+    font-size: 0.8rem;
+    justify-content: space-between;
+  }
+
+  .room__item-btn {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .room__item h4 {
+    font-size: 1rem;
+  }
+
+  .room__item h6 {
+    font-size: 0.9rem;
+  }
+
+  .room__item-info span {
+    font-size: 0.7rem;
+  }
+
+  .room__item-info span i {
+    font-size: 0.9rem;
+  }
+
+  .room__item-btn {
+    font-size: 0.8rem;
+  }
+}

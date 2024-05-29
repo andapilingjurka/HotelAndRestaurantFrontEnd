@@ -17,6 +17,11 @@ import StafiAdmin from "./Admin/StafiAdmin";
 import RewardBonusAdmin from "./Admin/RewardBonusAdmin";
 import Registration from "./components/LoginRegister/Registration";
 import LoginForm from "./components/LoginRegister/LoginForm";
+import Home from "./Home/Home";
+import RoomDetails from "./Home/RoomDetails";
+import RoomListing from "./Home/RoomListing";
+
+
 
 function App() {
   return (
@@ -36,6 +41,11 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/stafi" element={<StafiAdmin />} />
         <Route path="/rewardBonus" element={<RewardBonusAdmin />} />
+        <Route path="/rooms" element={<RoomListing />} />
+      <Route path="/rooms/:slug" element={<RoomDetails />} />
+      <Route path="/home" element={<Home />} />
+
+
       </Routes>
     </Router>
   );

@@ -255,7 +255,7 @@ function RoomAdmin() {
                       setSelectedImage(
                         URL.createObjectURL(event.target.files[0])
                       );
-                      setImage("./images/rooms/" + event.target.files[0].name);
+                      setImage("/images/rooms/" + event.target.files[0].name);
                     }}
                   />
                   {selectedImage && (
