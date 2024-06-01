@@ -33,9 +33,7 @@ const RoomItem = ({props}) => {
             </span>
           </div>
 
-          {/* <button className=" w-50 car__item-btn car__btn-rent">
-            <Link to={`/cars/${carName}`}>Rent</Link>
-          </button> */}
+       
 
           <button className=" w-100 room__item-btn">
             <Link to={`/rooms/${props.roomNumber}?id=${props.id}`}>Reserve it</Link>

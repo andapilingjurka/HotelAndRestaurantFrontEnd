@@ -120,7 +120,7 @@ function BookingsAdmin() {
     try {
       console.log("Deleting reservation with ID:", bookingId);
       await axios.delete(
-        `https://localhost:7285/api/Bookings/Delete?Id=${bookingId}`
+        `https://localhost:7264/api/Bookings/Delete?Id=${bookingId}`
       );
       showAndHideAlert("Rezervimi është fshir me sukses!");
       clearForm();
@@ -369,13 +369,13 @@ function BookingsAdmin() {
                 <thead>
                   <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Currency</th>
-                    <th></th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Totali</th>
                     <th scope="col">CheckIn Date</th>
                     <th scope="col">CheckOut Date</th>
                     <th scope="col">RoomID</th>
-                    <th scope="col">GuestID</th>
+                    <th scope="col" className="px-3">UserID</th>
                     <th scope="col">Options</th>
                   </tr>
                 </thead>
@@ -383,13 +383,13 @@ function BookingsAdmin() {
                   {bookings.map((booking) => (
                     <tr key={booking.id}>
                       <td>{booking.id}</td>
-                      <td>{booking.price}</td>
-                      <td>{booking.currency}</td>
-
+                      <td>{booking.name}</td>
+                      <td>{booking.lastName}</td>
+                      <td>{booking.toTal}</td>
                       <td>{booking.checkInDate}</td>
                       <td>{booking.checkOutDate}</td>
                       <td>{booking.roomId}</td>
-                      <td>{booking.guestId}</td>
+                      <td>{booking.userId}</td>
                       <td>
                         <div className="button-container">
                           <button
