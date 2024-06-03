@@ -58,7 +58,7 @@ function Registration() {
           Email: Email.trim(),
           Password: Password.trim(),
           LastName: LastName.trim(),
-          roleId: 1,
+          roleId: 5,
         }
       );
 

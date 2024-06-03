@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 // import Check from "./Check";
 import { decodeToken } from '../components/LoginRegister/jwtUtils';
+import StripeForm from '../components/Payment/StripeForm';
 
 
 const BookingForm = ({id, price}) => {
@@ -27,6 +28,9 @@ const BookingForm = ({id, price}) => {
   const [number, setNumber] = useState("");
   const [description, setdescription] = useState("");
   const token = localStorage.getItem('token');
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState(""); // New state for payment method
   let idktu;
   if (token) {
     idktu = decodeToken(token).nameid;
@@ -57,6 +61,16 @@ const BookingForm = ({id, price}) => {
           alert('Selected dates are not available. Please choose different dates.');
           return;
       }
+
+  // Handle payment method
+  if (paymentMethod === "Cash") {
+    navigate('/payment', { state: { total } });
+  } else if (paymentMethod === "Stripe") {
+
+    setShowPaymentForm(true);
+  }
+
+
       // Proceed with making the reservation
       console.log('Reservation is valid, proceed with booking.');
       // Additional steps to submit the booking can be implemented here
@@ -170,9 +184,19 @@ const BookingForm = ({id, price}) => {
     // } catch (error) {
     //   console.error('Error calculating discount:', error);
     // }
+    
   };
+  const handlePaymentSuccess = async () => {
+    
+    alert('Payment successful! Thank you for your booking.');
+    setPaymentSuccess(true);
+    // Handle post-payment success actions here (e.g., navigate to confirmation page)
+  };
+  
 
   return (
+    <div>
+      {!showPaymentForm && !paymentSuccess && (
     <Form onSubmit={submitHandler}>
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
       <label>First Name </label>
@@ -233,7 +257,20 @@ const BookingForm = ({id, price}) => {
        
        <input type="text" placeholder="id" defaultValue={id}  /> 
     </FormGroup>
-     
+  
+    <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+  <label>Payment Method</label>
+  <select
+    className="rezervime-form-control"
+    id="paymentMethod"
+    value={paymentMethod}
+    onChange={(event) => setPaymentMethod(event.target.value)}
+  >
+    <option value="">Select payment method</option>
+    <option value="Cash">Cash</option>
+    <option value="Stripe">Online Payment</option>
+  </select>
+</FormGroup>
      
 
       <FormGroup>
@@ -246,14 +283,26 @@ const BookingForm = ({id, price}) => {
           onChange={(e) => setdescription(e.target.value)}
         ></textarea>
       </FormGroup>
-      
+     
+
+    
+
       {/* <div className="payment text-end mt-5">
         <button onClick={calculateDiscount}>Check</button>
       </div> */}
-      <button onClick={handleReservationAttempt}>Book Now</button>
+          <button onClick={handleReservationAttempt}>Book Now</button>
     </Form>
   // After your Form component
+)}
+{showPaymentForm && (
+  <StripeForm 
+    amount={total} 
+    description={description}
 
+    onSuccess={handlePaymentSuccess} 
+  />
+)}
+</div>
 
     
   );

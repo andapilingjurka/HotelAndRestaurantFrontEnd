@@ -20,6 +20,9 @@ import LoginForm from "./components/LoginRegister/LoginForm";
 import Home from "./Home/Home";
 import RoomDetails from "./Home/RoomDetails";
 import RoomListing from "./Home/RoomListing";
+import AboutUs from "./components/AboutUs/AboutUs";
+import Payment from "./Admin/Payment";
+import PaymentForm from "./components/Payment/PaymentForm";
 
 
 
@@ -32,6 +35,7 @@ function App() {
         <Route path="/roomtype" element={<RoomTypeAdmin />} />
         <Route path="/guests" element={<GuestAdmin />} />
         <Route path="/bookings" element={<BookingsAdmin />} />
+        <Route path="/paymentCrud" element={<Payment />} />
         <Route path="/usermenu" element={<Menu />} />
         <Route path="/foods" element={<FoodsCrud />} />
         <Route path="/menu" element={<MenuCrud />} />
@@ -44,6 +48,11 @@ function App() {
         <Route path="/rooms" element={<RoomListing />} />
       <Route path="/rooms/:slug" element={<RoomDetails />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/payment" element={<PaymentForm />} />
+      <Route path="/aboutus" element={<AboutUs />} />
+
+
+
 
 
       </Routes>

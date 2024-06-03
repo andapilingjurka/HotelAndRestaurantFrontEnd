@@ -1,8 +1,41 @@
-.body{
-    background-color: #f1f1f1;
-    width: 100%;
-    position: absolute;
+body {
+  background-color: #FFFF; 
+  margin: 0;
+  padding: 0;
 }
+/* Fshehi butonat e kontrollit për video */
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-pause-button,
+video::-webkit-media-controls-current-time-display,
+video::-webkit-media-controls-time-remaining-display,
+video::-webkit-media-controls-timeline,
+video::-webkit-media-controls-volume-slider {
+display: none !important;
+}
+
+/* Fshehi butonat për shfletim në video */
+video::-webkit-media-controls-enclosure {
+overflow: hidden !important;
+}
+
+/* Bën që videoja të mbulojë plotësisht faqen */
+.video-container {
+position: relative;
+width: 100%;
+height: 100vh;
+overflow: hidden;
+}
+
+video {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
 .menu-item {
     margin-bottom: 40px;
     overflow: hidden;
@@ -37,3 +70,5 @@
   .menu-item-description {
 margin-bottom: 10px;
   }
+
+ 

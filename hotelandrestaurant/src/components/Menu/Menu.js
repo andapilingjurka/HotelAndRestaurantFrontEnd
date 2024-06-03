@@ -3,6 +3,10 @@ import axios from "axios";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BsSearch } from "react-icons/bs"; 
+import restaurant from "./restaurant.mp4";
+import "./menu.css";
+
+
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
@@ -44,6 +48,15 @@ const Menu = () => {
 
   return (
     <div className="body">
+       <div className="video-container">
+        <video controls={false} autoPlay muted loop>
+          <source src={restaurant} type="video/mp4" />
+         
+
+          Your browser does not support the video tag.
+        </video>
+      </div>
+     <div></div>
       <Container>
         <div style={{ marginBottom: '20px', textAlign: 'center' }}>
         <h1 style={{ fontFamily: 'cursive', fontWeight: 'bold', margin: '10px 0' }}>Menu</h1>
@@ -82,6 +95,7 @@ const Menu = () => {
         </Row>
       </Container>
     </div>
+  
   );  
 };
 
