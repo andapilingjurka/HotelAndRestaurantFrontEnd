@@ -1,15 +1,14 @@
 import React from "react";
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import "./booking-form.css";
 import { Form, FormGroup } from "reactstrap";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-// import Check from "./Check";
 import { decodeToken } from '../components/LoginRegister/jwtUtils';
 import StripeForm from '../components/Payment/StripeForm';
 
 
-const BookingForm = ({id, price}) => {
+const BookingForm = ({ id, price }) => {
   const submitHandler = (event) => {
     event.preventDefault();
   };
@@ -17,16 +16,12 @@ const BookingForm = ({id, price}) => {
   const [dropOffDate, setDropOffDate] = useState('');
   const [dita, setDita] = useState(0);
   const [total, setTotal] = useState();
-  
-  const [discountedPrice, setDiscountedPrice] = useState(null);
   const navigate = useNavigate();
 
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   const [bookedDates, setBookedDates] = useState([]);
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
-  const [number, setNumber] = useState("");
-  const [description, setdescription] = useState("");
   const token = localStorage.getItem('token');
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
@@ -35,25 +30,26 @@ const BookingForm = ({id, price}) => {
   if (token) {
     idktu = decodeToken(token).nameid;
   }
-    
-    // setUserId(idktu)
-    const isReservationValid = (pickUpDate, dropOffDate, bookedDates) => {
-      let start = new Date(pickUpDate);
-      let end = new Date(dropOffDate);
+ 
 
-      // Normalize dates to remove time part
-      start.setHours(0, 0, 0, 0);
-      end.setHours(0, 0, 0, 0);
+  // setUserId(idktu)
+  const isReservationValid = (pickUpDate, dropOffDate, bookedDates) => {
+    let start = new Date(pickUpDate);
+    let end = new Date(dropOffDate);
 
-      // Check if any booked date falls between the start and end dates
-      for (let date of bookedDates) {
-          let bookedDate = new Date(date);
-          bookedDate.setHours(0, 0, 0, 0);
-          if (bookedDate >= start && bookedDate <= end) {
-              return false; // Invalid reservation as it overlaps with a booked date
-          }
+    // Normalize dates to remove time part
+    start.setHours(0, 0, 0, 0);
+    end.setHours(0, 0, 0, 0);
+
+    // Check if any booked date falls between the start and end dates
+    for (let date of bookedDates) {
+      let bookedDate = new Date(date);
+      bookedDate.setHours(0, 0, 0, 0);
+      if (bookedDate >= start && bookedDate <= end) {
+        return false; // Invalid reservation as it overlaps with a booked date
       }
-      return true; // Valid reservation
+    }
+    return true; // Valid reservation
   };
 
   const handleReservationAttempt = () => {
@@ -77,9 +73,10 @@ const BookingForm = ({id, price}) => {
   };
     
   
+
   useEffect(() => {
     // Function to calculate the sum and update the total state
-   
+
 
     const calculateDays = () => {
       if (pickUpDate && dropOffDate) {
@@ -88,56 +85,60 @@ const BookingForm = ({id, price}) => {
         const timeDifference = endDate.getTime() - startDate.getTime();
         const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
         setDita(daysDifference);
-        
-       
+
+
       } else {
         setDita(null); // Reset the number of days if dates are not valid
       }
-      
+
       // e gjen datat e te cilat jon trezervume 
       const fetchBookedDates = async () => {
         try {
-           
-           const response = await axios.get(`https://localhost:7264/api/Bookings/BookedDates/${id}`);
-            const bookedDates = response.data.map(booking => {
-                const start = new Date(booking.checkIn);
-                const end = new Date(booking.checkOut);
-                const dates = [];
-                for (let dt = new Date(start); dt <= end; dt.setDate(dt.getDate() + 1)) {
-                    dates.push(new Date(dt));
-                }
-                return dates;
-            }).flat();  
-            setBookedDates(bookedDates);
-            console.log("asdsad"+bookedDates)
+          const response = await axios.get(`https://localhost:7264/api/Bookings/BookedDates/${id}`);
+          const bookedDates = response.data.map(booking => {
+            const start = new Date(booking.checkIn);
+            const end = new Date(booking.checkOut);
+            const dates = [];
+            for (let dt = new Date(start); dt <= end; dt.setDate(dt.getDate() + 1)) {
+              dates.push(new Date(dt));
+            }
+            return dates;
+          }).flat();
+          setBookedDates(bookedDates);
+          console.log("asdsad" + bookedDates)
         } catch (error) {
-            console.error('Error fetching booked dates:', error);
+          console.error('Error fetching booked dates:', error);
         }
-    };
+      };
 
-    // e gjen datat e te cilat jon trezervume 
-    fetchBookedDates();
+      // e gjen datat e te cilat jon trezervume 
+      fetchBookedDates();
     };
 
 
     calculateDays();
+
     const calculateTotal = () => {
       const sum = dita * price;
       setTotal(sum);
-      
+
     };
     // Call calculateTotal whenever id or price changes
     calculateTotal();
-    
+
   }, [dita, price, pickUpDate, dropOffDate]);
 
-  console.log(total)
-  console.log("Dita",dita)
-  console.log("Price",price)
+  // console.log(total)
+  // console.log("Dita", dita)
+  // console.log("Price", price)
 
- // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  const calculateDiscount = async () => {
-    if(dita<=0){
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  const saveReservation = async () => {
+    if (!isReservationValid(pickUpDate, dropOffDate, bookedDates)) {
+      alert('Selected dates are not available. Please choose different dates.');
+      return;
+    }
+    if (dita <= 0) {
       alert("Pick up Date is Incorrect")
       return;
     }
@@ -191,6 +192,31 @@ const BookingForm = ({id, price}) => {
     alert('Payment successful! Thank you for your booking.');
     setPaymentSuccess(true);
     // Handle post-payment success actions here (e.g., navigate to confirmation page)
+
+    try {
+      const response = await axios.post("https://localhost:7264/api/Bookings/Add", {
+
+        //qetu e osht per form nuk mundesh me rezervu nese nuk je i bom login
+        name: firstName,
+        lasttName: lastName,
+        checkInDate: pickUpDate,
+        checkOutDate: dropOffDate,
+        roomId: id,
+        toTal: total,
+        userId: idktu,
+
+
+
+
+      });
+      alert("Rezervimi u be me sukses")
+      navigate('/home')
+
+      
+
+    } catch (error) {
+      console.error('Error calculating discount:', error);
+    }
   };
   
 
@@ -199,59 +225,56 @@ const BookingForm = ({id, price}) => {
       {!showPaymentForm && !paymentSuccess && (
     <Form onSubmit={submitHandler}>
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
-      <label>First Name </label>
-        <input type="text" 
-         value={firstName}
-         onChange={(e) => setfirstName(e.target.value)}  />
+        <label>First Name </label>
+        <input type="text"
+          value={firstName}
+          onChange={(e) => setfirstName(e.target.value)} />
       </FormGroup>
       <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-      <label>Last Name </label>
-        <input type="text"  
-         value={lastName}
-         onChange={(e) => setlastName(e.target.value)} />
+        <label>Last Name </label>
+        <input type="text"
+          value={lastName}
+          onChange={(e) => setlastName(e.target.value)} />
       </FormGroup>
 
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
-      <label>Number </label>
-        <input type="text" 
-         value={number}
-         onChange={(e) => setNumber(e.target.value)}/>
-      </FormGroup>
-
-      <FormGroup className="booking__form d-inline-block ms-1 mb-4">
         <label>Pick Up Date: </label>
         <input
-          type="date" 
+          type="date"
           value={pickUpDate}
           onChange={(e) => setPickUpDate(e.target.value)}
         />
       </FormGroup>
 
-      <FormGroup className="booking__form d-inline-block me-4 mb-4">
+      <FormGroup className="booking__form d-inline-block ms-1 mb-4">
         <label>Drop Off Date: </label>
         <input
-          type="date" 
+          type="date"
           value={dropOffDate}
           onChange={(e) => setDropOffDate(e.target.value)}
         />
       </FormGroup>
 
-      <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+      <FormGroup className="booking__form d-inline-block me-4 mb-4">
         <label>Number Of Days </label>
         <input type="number" value={dita} readOnly />
       </FormGroup>
-  
 
-     
-      
-      <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <label>Price for Day</label>
-         <input type="number" placeholder="qmimi" defaultValue={price}  readOnly /> 
-      </FormGroup>
-   
+
+
+
       <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-      <label>Total</label>
-         <input type="number" placeholder="Totali" defaultValue={total} readOnly  /> 
+        <label>Price for Day</label>
+        <input type="number" placeholder="qmimi" defaultValue={price} readOnly />
+      </FormGroup>
+
+      <FormGroup className="booking__form d-inline-block me-4 mb-4">
+        <label>Total</label>
+        <input type="number" placeholder="Totali" defaultValue={total} readOnly />
+      </FormGroup>
+      <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+
+        <input type="text" placeholder="id" defaultValue={id} hidden />
       </FormGroup>
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
        
@@ -287,10 +310,16 @@ const BookingForm = ({id, price}) => {
 
     
 
+
+
+
+
+
       {/* <div className="payment text-end mt-5">
         <button onClick={calculateDiscount}>Check</button>
       </div> */}
           <button onClick={handleReservationAttempt}>Book Now</button>
+      <button onClick={saveReservation}>Book Now</button>
     </Form>
   // After your Form component
 )}
@@ -298,13 +327,14 @@ const BookingForm = ({id, price}) => {
   <StripeForm 
     amount={total} 
     description={description}
+    // After your Form component
 
     onSuccess={handlePaymentSuccess} 
   />
 )}
 </div>
 
-    
+
   );
 };
 
