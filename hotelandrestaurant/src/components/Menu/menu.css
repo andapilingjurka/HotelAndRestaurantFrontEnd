@@ -39,6 +39,7 @@ object-fit: cover;
 .menu-item {
     margin-bottom: 40px;
     overflow: hidden;
+    background-color: black;
   }
   
   .menu-item-image {

@@ -1,0 +1,26 @@
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer .social-media {
+  margin-bottom: 10px;
+}
+
+.footer .social-media a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer p {
+  margin: 0;
+}

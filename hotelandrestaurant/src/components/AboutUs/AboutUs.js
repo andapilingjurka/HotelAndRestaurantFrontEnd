@@ -3,6 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils, faShieldAlt, faTachometerAlt, faHeadset, faBed, faGlassCheers, faFutbolBall, faGamepad, faDumbbell, faSpa } from '@fortawesome/free-solid-svg-icons';
 
+import Navbar from '../../include/Nav';
+import Footer from '../../include/Footer';
+
+
+
 import "./aboutus.css";
 import hotel from "./hotel.mp4";
 import photo1 from "./photo1.jpg";
@@ -20,7 +25,7 @@ const AboutUs = () => {
 
   return (
     <div>
-    
+    <Navbar/>
       <div className="video-container">
         <video controls={false} autoPlay muted loop>
           <source src={hotel} type="video/mp4" />
@@ -141,8 +146,9 @@ const AboutUs = () => {
             .{" "}
           </div>
         </div>
+     
       </div>
-
+      <Footer/>
      
 
     </div>

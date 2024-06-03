@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BsSearch } from "react-icons/bs"; 
 import restaurant from "./restaurant.mp4";
 import "./menu.css";
+import Navbar from '../../include/Nav';
+import Footer from '../../include/Footer';
 
 
 
@@ -47,7 +49,8 @@ const Menu = () => {
   };
 
   return (
-    <div className="body">
+    <div className="body" style={{ backgroundColor: 'black'}}>
+      <Navbar/>
        <div className="video-container">
         <video controls={false} autoPlay muted loop>
           <source src={restaurant} type="video/mp4" />
@@ -56,10 +59,10 @@ const Menu = () => {
           Your browser does not support the video tag.
         </video>
       </div>
-     <div></div>
-      <Container>
+     <div ></div>
+      <Container  style={{ backgroundColor: 'black'}}>
         <div style={{ marginBottom: '20px', textAlign: 'center' }}>
-        <h1 style={{ fontFamily: 'cursive', fontWeight: 'bold', margin: '10px 0' }}>Menu</h1>
+        <h1 style={{ fontFamily: 'sans-serif', fontWeight: 'bold', margin: '10px 0' }}>MENU</h1>
         <div style={{ display: 'inline-block', position: 'relative' }}>
          {showSearch ? (
              <>
@@ -94,6 +97,7 @@ const Menu = () => {
           ))}
         </Row>
       </Container>
+      <Footer/>
     </div>
   
   );  

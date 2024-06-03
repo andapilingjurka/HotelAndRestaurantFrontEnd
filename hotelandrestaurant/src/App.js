@@ -24,6 +24,9 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import Payment from "./Admin/Payment";
 import PaymentForm from "./components/Payment/PaymentForm";
 
+import SendNotification from "./Admin/SendNotification";
+import MainPage from "./components/Main/MainPage";
+// import ReceiveNotification from "./Admin/ReceiveNotification";
 
 
 function App() {
@@ -50,9 +53,15 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/payment" element={<PaymentForm />} />
       <Route path="/aboutus" element={<AboutUs />} />
+      <Route path="/mainpage" element={<MainPage />} />
+     
 
 
 
+        <Route path="/rooms/:slug" element={<RoomDetails />} />
+        <Route path="/send-notification" element={<SendNotification/>} />
+        {/* <Route path="/receive-notification" element={<ReceiveNotification/>} /> */}
+        <Route path="/home" element={<Home />} />
 
 
       </Routes>

@@ -6,7 +6,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { decodeToken } from '../components/LoginRegister/jwtUtils';
 import StripeForm from '../components/Payment/StripeForm';
-
+import Navbar from '../include/Nav';
 
 const BookingForm = ({ id, price }) => {
   const submitHandler = (event) => {
@@ -17,7 +17,7 @@ const BookingForm = ({ id, price }) => {
   const [dita, setDita] = useState(0);
   const [total, setTotal] = useState();
   const navigate = useNavigate();
-
+  const[description,setdescription]=useState('');
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   const [bookedDates, setBookedDates] = useState([]);
   const [firstName, setfirstName] = useState("");
@@ -222,6 +222,7 @@ const BookingForm = ({ id, price }) => {
 
   return (
     <div>
+      <Navbar/>
       {!showPaymentForm && !paymentSuccess && (
     <Form onSubmit={submitHandler}>
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
@@ -265,7 +266,7 @@ const BookingForm = ({ id, price }) => {
 
       <FormGroup className="booking__form d-inline-block ms-1 mb-4">
         <label>Price for Day</label>
-        <input type="number" placeholder="qmimi" defaultValue={price} readOnly />
+        <input type="number" placeholder="cmimi" defaultValue={price} readOnly />
       </FormGroup>
 
       <FormGroup className="booking__form d-inline-block me-4 mb-4">

@@ -7,6 +7,9 @@ import { Form, Button, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import login from "./hotel.png";
+import Navbar from '../../include/Nav';
+import Footer from '../../include/Footer';
+
 
 // import MyNavbar from "../include/Navbar";
 
@@ -51,7 +54,7 @@ function LoginForm() {
 
   return (
     <div>
-      {/* <MyNavbar /> */}
+       <Navbar /> 
       <div className="container d-flex justify-content-center align-items-center min-vh-100 login">
         <div className="row border rounded-5 p-3 bg-white shadow box-area">
           <div
@@ -120,6 +123,7 @@ function LoginForm() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

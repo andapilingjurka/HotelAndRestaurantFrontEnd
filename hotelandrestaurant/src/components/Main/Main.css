@@ -1,0 +1,178 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+}
+
+.left-content {
+  color: white;
+  max-width: 600px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* .social-media a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.book-now {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+} */
+
+.right-content {
+  color: white;
+  max-width: 500px;
+  text-align: right;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.main-content {
+  text-align: right;
+}
+
+.main-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.main-content p {
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #ff6f61;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.main-section {
+  padding: 50px 0;
+  background-color: #f8f8f8;
+}
+
+.cards1-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card1 {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 30%;
+  max-width: 300px;
+  margin: 10px;
+}
+
+.card1-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card1-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card1-content h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.card1-content p {
+  font-size: 16px;
+  color: #666;
+}
+.text-image-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+.text-content {
+  flex: 1;
+  padding-right: 10px;
+}
+
+.text-content h2 {
+  font-weight: bold;
+  font-size: 28px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+
+.text-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+
+.image-content {
+  flex: 1;
+  text-align: right;
+}
+
+.image-content img {
+  width: 100%;
+  border-radius: 10px;
+  height:400px;
+}

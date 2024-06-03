@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./register.css";
 import register from "./hotel.png";
+import Navbar from '../../include/Nav';
+import Footer from '../../include/Footer';
+
 
 const isEmailValid = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -79,11 +82,12 @@ function Registration() {
 
   return (
     <div>
+      <Navbar/>
       <div className="container d-flex justify-content-center align-items-center min-vh-100 register">
         <div className="row border rounded-5 p-3 bg-white shadow box-area">
           <div
             className="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-            style={{ background: "#61c0bf" }}
+            style={{ background: "#00000" }}
           >
             <div className="featured-imagee mb-3">
               <img
@@ -176,6 +180,7 @@ function Registration() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
