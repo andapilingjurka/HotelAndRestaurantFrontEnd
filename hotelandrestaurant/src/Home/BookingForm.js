@@ -62,8 +62,7 @@ const BookingForm = ({ id, price }) => {
   if (paymentMethod === "Cash") {
     navigate('/payment', { state: { total } });
   } else if (paymentMethod === "Stripe") {
-
-    setShowPaymentForm(true);
+    navigate('/stripe', { state: { total, description } });
   }
 
 
@@ -222,121 +221,88 @@ const BookingForm = ({ id, price }) => {
 
   return (
     <div>
-      <Navbar/>
-      {!showPaymentForm && !paymentSuccess && (
-    <Form onSubmit={submitHandler}>
-      <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <label>First Name </label>
-        <input type="text"
-          value={firstName}
-          onChange={(e) => setfirstName(e.target.value)} />
-      </FormGroup>
-      <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-        <label>Last Name </label>
-        <input type="text"
-          value={lastName}
-          onChange={(e) => setlastName(e.target.value)} />
-      </FormGroup>
-
-      <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <label>Pick Up Date: </label>
-        <input
-          type="date"
-          value={pickUpDate}
-          onChange={(e) => setPickUpDate(e.target.value)}
-        />
-      </FormGroup>
-
-      <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-        <label>Drop Off Date: </label>
-        <input
-          type="date"
-          value={dropOffDate}
-          onChange={(e) => setDropOffDate(e.target.value)}
-        />
-      </FormGroup>
-
-      <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <label>Number Of Days </label>
-        <input type="number" value={dita} readOnly />
-      </FormGroup>
-
-
-
-
-      <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-        <label>Price for Day</label>
-        <input type="number" placeholder="cmimi" defaultValue={price} readOnly />
-      </FormGroup>
-
-      <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <label>Total</label>
-        <input type="number" placeholder="Totali" defaultValue={total} readOnly />
-      </FormGroup>
-      <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-
-        <input type="text" placeholder="id" defaultValue={id} hidden />
-      </FormGroup>
-      <FormGroup className="booking__form d-inline-block me-4 mb-4">
-       
-       <input type="text" placeholder="id" defaultValue={id}  /> 
-    </FormGroup>
-  
-    <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-  <label>Payment Method</label>
-  <select
-    className="rezervime-form-control"
-    id="paymentMethod"
-    value={paymentMethod}
-    onChange={(event) => setPaymentMethod(event.target.value)}
-  >
-    <option value="">Select payment method</option>
-    <option value="Cash">Cash</option>
-    <option value="Stripe">Online Payment</option>
-  </select>
-</FormGroup>
-     
-
-      <FormGroup>
-        <textarea
-          rows={5}
-          type="textarea"
-          className="textarea"
-          placeholder="Write"
-          value={description}
-          onChange={(e) => setdescription(e.target.value)}
-        ></textarea>
-      </FormGroup>
-     
-
-    
-
-
-
-
-
-
-      {/* <div className="payment text-end mt-5">
-        <button onClick={calculateDiscount}>Check</button>
-      </div> */}
-          <button onClick={handleReservationAttempt}>Book Now</button>
-      <button onClick={saveReservation}>Book Now</button>
-    </Form>
-  // After your Form component
-)}
-{showPaymentForm && (
-  <StripeForm 
-    amount={total} 
-    description={description}
-    // After your Form component
-
-    onSuccess={handlePaymentSuccess} 
-  />
-)}
-</div>
-
-
-  );
+    <Navbar />
+    {!showPaymentForm && !paymentSuccess && (
+      <Form onSubmit={submitHandler}>
+        <FormGroup className="booking__form d-inline-block me-4 mb-4">
+          <label>First Name </label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setfirstName(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+          <label>Last Name </label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setlastName(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup className="booking__form d-inline-block me-4 mb-4">
+          <label>Pick Up Date: </label>
+          <input
+            type="date"
+            value={pickUpDate}
+            onChange={(e) => setPickUpDate(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+          <label>Drop Off Date: </label>
+          <input
+            type="date"
+            value={dropOffDate}
+            onChange={(e) => setDropOffDate(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup className="booking__form d-inline-block me-4 mb-4">
+          <label>Number Of Days </label>
+          <input type="number" value={dita} readOnly />
+        </FormGroup>
+        <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+          <label>Price for Day</label>
+          <input type="number" placeholder="cmimi" defaultValue={price} readOnly />
+        </FormGroup>
+        <FormGroup className="booking__form d-inline-block me-4 mb-4">
+          <label>Total</label>
+          <input type="number" placeholder="Totali" value={total} readOnly />
+        </FormGroup>
+        <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+          <label>Payment Method</label>
+          <select
+            className="rezervime-form-control"
+            id="paymentMethod"
+            value={paymentMethod}
+            onChange={(event) => setPaymentMethod(event.target.value)}
+          >
+            <option value="">Select payment method</option>
+            <option value="Cash">Cash</option>
+            <option value="Stripe">Online Payment</option>
+          </select>
+        </FormGroup>
+        <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+          <input type="text" placeholder="id" defaultValue={id} hidden />
+        </FormGroup>
+        <FormGroup className="booking__form d-inline-block me-4 mb-4">
+          <input type="text" placeholder="id" defaultValue={id} />
+        </FormGroup>
+      
+        <FormGroup>
+          <textarea
+            rows={5}
+            type="textarea"
+            className="textarea"
+            placeholder="Write"
+            value={description}
+            onChange={(e) => setdescription(e.target.value)}
+          ></textarea>
+        </FormGroup>
+        <button onClick={handleReservationAttempt}>Book Now</button>
+      </Form>
+    )}
+  </div>
+);
 };
 
 export default BookingForm;

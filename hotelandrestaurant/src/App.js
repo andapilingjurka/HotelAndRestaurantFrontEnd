@@ -23,6 +23,7 @@ import RoomListing from "./Home/RoomListing";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Payment from "./Admin/Payment";
 import PaymentForm from "./components/Payment/PaymentForm";
+import StripeForm from "./components/Payment/StripeForm";
 
 import SendNotification from "./Admin/SendNotification";
 import MainPage from "./components/Main/MainPage";
@@ -52,6 +53,8 @@ function App() {
       <Route path="/rooms/:slug" element={<RoomDetails />} />
       <Route path="/home" element={<Home />} />
       <Route path="/payment" element={<PaymentForm />} />
+      <Route path="/stripe" element={<StripeForm />} />
+
       <Route path="/aboutus" element={<AboutUs />} />
       <Route path="/mainpage" element={<MainPage />} />
      

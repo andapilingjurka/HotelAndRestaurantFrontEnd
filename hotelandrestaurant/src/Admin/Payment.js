@@ -176,7 +176,6 @@ function Payment() {
         <div className="col-4 col-md-2"></div>
         <div className="col">
           <div>
-            <h4 className="description">Payment information</h4>
             <div className="container mt-4">
               <form>
                 <div className="form-group">
