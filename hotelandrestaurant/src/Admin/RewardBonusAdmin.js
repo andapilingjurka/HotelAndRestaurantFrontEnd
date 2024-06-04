@@ -19,6 +19,10 @@ function RewardBonusAdmin() {
   const [rewardBonuses, setRewardBonuses] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortField, setSortField] = useState("name");
+  const [isAscending, setIsAscending] = useState(true);
+
 
   useEffect(() => {
     (async () => await loadRewardBonuses())();
@@ -51,6 +55,19 @@ function RewardBonusAdmin() {
       showAndHideAlert(`Error: ${err}`, true);
     }
   }
+
+  //filtering
+ async function load() {
+  try {
+    const result = await axios.get(
+      "https://localhost:7264/api/RewardBonus/GetAllFiltering",
+      { params: { searchQuery, sortField, isAscending } }
+    );
+    setRewardBonuses(result.data);
+  } catch (err) {
+    console.error("Error loading cities:", err);
+  }
+}
 
   function clearForm() {
     setId("");
@@ -112,7 +129,10 @@ function RewardBonusAdmin() {
       setIsAlertVisible(false);
     }, 3000); // Hide the alert after 3 seconds
   }
-
+  function handleSearch(event) {
+    event.preventDefault();
+    load();
+  }
   return (
     <div
       className="container-fluid"
@@ -215,7 +235,26 @@ function RewardBonusAdmin() {
                 </div>
               </form>
             </div>
-            <br />
+            <br></br>
+            
+            {/* Search and Sort Controls */}
+            <div className="container mt-4">
+              <form onSubmit={handleSearch}>
+                <div className="form-group">
+                  <label className="label">Search</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                  />
+                </div>
+               
+                <button type="submit" className="btn btn-primary">
+                  Search
+                </button>
+              </form>
+            </div>
 
             {/* Alert Message */}
             {isAlertVisible && (

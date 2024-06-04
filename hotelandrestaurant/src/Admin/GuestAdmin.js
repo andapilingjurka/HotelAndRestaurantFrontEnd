@@ -19,6 +19,9 @@ function GuestAdmin() {
   const [phone, setGuestPhone] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortField, setSortField] = useState("name");
+  const [isAscending, setIsAscending] = useState(true);
 
   useEffect(() => {
     (async () => await Load())();
@@ -35,7 +38,18 @@ function GuestAdmin() {
       console.error(err);
     }
   }
-
+ //filtering
+ async function load() {
+  try {
+    const result = await axios.get(
+      "https://localhost:7264/api/Guests/GetAllFiltering",
+      { params: { searchQuery, sortField, isAscending } }
+    );
+    setGuest(result.data);
+  } catch (err) {
+    console.error("Error loading cities:", err);
+  }
+}
   async function save(event) {
     event.preventDefault();
     try {
@@ -113,6 +127,11 @@ function GuestAdmin() {
     setTimeout(() => {
       setIsAlertVisible(false);
     }, 3000); // Hide the alert after 3 seconds
+  }
+
+  function handleSearch(event) {
+    event.preventDefault();
+    load();
   }
 
   ///////////////////////////////////////////////////////////////
@@ -207,7 +226,25 @@ function GuestAdmin() {
               </form>
             </div>
             <br></br>
-
+            
+            {/* Search and Sort Controls */}
+            <div className="container mt-4">
+              <form onSubmit={handleSearch}>
+                <div className="form-group">
+                  <label className="label">Search</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                  />
+                </div>
+               
+                <button type="submit" className="btn btn-primary">
+                  Search
+                </button>
+              </form>
+            </div>
             {/* Alert Message */}
             {isAlertVisible && (
               <div

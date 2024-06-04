@@ -50,6 +50,18 @@ function Payment() {
     }
   }
 
+  //filtering
+  async function load() {
+    try {
+      const result = await axios.get(
+        "https://localhost:7264/api/Payment/GetAllFiltering",
+        { params: { searchQuery, sortField, isAscending } }
+      );
+      setPayment(result.data);
+    } catch (err) {
+      console.error("Error loading cities:", err);
+    }
+  }
   async function loadPayment() {
     try {
       const result = await axios.get(
@@ -155,7 +167,7 @@ function Payment() {
 
   function handleSearch(event) {
     event.preventDefault();
-    loadPayment();
+    load();
   }
 
   return (
@@ -300,28 +312,12 @@ function Payment() {
                     onChange={(event) => setSearchQuery(event.target.value)}
                   />
                 </div>
-                <div className="form-group">
-                  <label className="label">Order by:</label>
-                  <select
-                    className="form-control"
-                    value={sortField}
-                    onChange={(event) => setSortField(event.target.value)}
-                  >
-                    <option value="name">Name</option>
-                    <option value="surname">Surname</option>
-                    <option value="date">Date</option>
-                    <option value="phone">Phone</option>
-                    <option value="amount">Amount</option>
-                    <option value="bookingID">BookingID</option>
-                  </select>
-                </div>
                
                 <button type="submit" className="btn btn-primary">
-                Search
+                  Search
                 </button>
               </form>
             </div>
-
             {/* Alert Message */}
             {isAlertVisible && (
               <div

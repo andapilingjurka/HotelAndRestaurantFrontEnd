@@ -14,7 +14,9 @@ function StafiAdmin() {
   const [nrTelefonit, setNrTelefonit] = useState("");
   const [kualifikimi, setKualifikimi] = useState("");
   const inputFileRef = useRef(null);
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortField, setSortField] = useState("name");
+  const [isAscending, setIsAscending] = useState(true);
   const Toggle = () => {
     setToggle(!toggle);
   };
@@ -32,7 +34,18 @@ function StafiAdmin() {
       console.error("Error loading stafi:", error);
     }
   }
-  
+   //filtering
+ async function load() {
+  try {
+    const result = await axios.get(
+      "https://localhost:7264/api/Staff/GetAllFiltering",
+      { params: { searchQuery, sortField, isAscending } }
+    );
+    setStafi(result.data);
+  } catch (err) {
+    console.error("Error loading cities:", err);
+  }
+}
   async function save(event) {
     event.preventDefault();
     try {
@@ -165,7 +178,10 @@ function StafiAdmin() {
     setSelectedImage(null);
     inputFileRef.current.value = "";
   }
-
+  function handleSearch(event) {
+    event.preventDefault();
+    load();
+  }
   return (
     <div className="container-fluid" style={{ backgroundColor: "#3f4345", minHeight: "100vh", backgroundSize: "cover" }}>
       <div className="row">
@@ -228,8 +244,26 @@ function StafiAdmin() {
                 </div>
               </form>
             </div>
-            <br />
-            <div className="table-responsive m-3">
+            <br></br>
+              {/* Search and Sort Controls */}
+              <div className="container mt-4">
+              <form onSubmit={handleSearch}>
+                <div className="form-group">
+                  <label className="label">Search</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                  />
+                </div>
+               
+                <button type="submit" className="btn btn-primary">
+                  Search
+                </button>
+              </form>
+            </div>          
+              <div className="table-responsive m-3">
               <table className="table border-gray">
                 <thead>
                   <tr>

@@ -18,6 +18,9 @@ function Users() {
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const token = localStorage.getItem('token');
   const decodedToken = decodeToken(token);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortField, setSortField] = useState("name");
+  const [isAscending, setIsAscending] = useState(true);
   const navigate = useNavigate();
   const Toggle = () => {
     setToggle(!toggle);
@@ -60,7 +63,18 @@ function Users() {
       console.error("Error loading states:", err);
     }
   }
-
+   //filtering
+   async function load() {
+    try {
+      const result = await axios.get(
+        "https://localhost:7264/api/Users/GetAllFiltering",
+        { params: { searchQuery, sortField, isAscending } }
+      );
+      setPerdoruesit(result.data);
+    } catch (err) {
+      console.error("Error loading cities:", err);
+    }
+  }
 
    async function edit(qyteti) {
     seteditUseri(qyteti)
@@ -106,7 +120,10 @@ function Users() {
     setIsAlertVisible(false);
   }, 3000); // Hide the alert after 3 seconds
 }
-
+function handleSearch(event) {
+  event.preventDefault();
+  load();
+}
   return (
     <div
       className="container-fluid"
@@ -168,17 +185,38 @@ function Users() {
           </form>
           
     <br></br>
+     
+            {/* Search and Sort Controls */}
+            <div className="container mt-4">
+              <form onSubmit={handleSearch}>
+                <div className="form-group">
+                  <label className="label">Search</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                  />
+                </div>
+               
+                <button type="submit" className="btn btn-primary">
+                  Search
+                </button>
+              </form>
+            </div>
+            {/* Alert Message */}
+            {isAlertVisible && (
+              <div
+                className={`alert ${
+                  alertMessage.includes("Error")
+                    ? "alert-danger"
+                    : "alert-success"
+                }`}
+              >
+                {alertMessage}
+              </div>
+            )}
 
-    {/* Alert Message */}
-    {isAlertVisible && (
-      <div
-        className={`alert ${
-          alertMessage.includes("Error") ? "alert-danger" : "alert-success"
-        }`}
-      >
-        {alertMessage}
-      </div>
-    )}
 
     <div className="table-responsive m-3">
       <table className="table border-gray">

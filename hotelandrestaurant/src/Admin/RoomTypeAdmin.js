@@ -16,6 +16,9 @@ function RoomTypeAdmin() {
   const [roomtypes, setRoomType] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortField, setSortField] = useState("name");
+  const [isAscending, setIsAscending] = useState(true);
 
   useEffect(() => {
     (async () => await Load())();
@@ -47,7 +50,18 @@ function RoomTypeAdmin() {
       showAndHideAlert(`Error: ${err}`, true);
     }
   }
-
+ //filtering
+ async function load() {
+  try {
+    const result = await axios.get(
+      "https://localhost:7264/api/RoomType/GetAllFiltering",
+      { params: { searchQuery, sortField, isAscending } }
+    );
+    setRoomType(result.data);
+  } catch (err) {
+    console.error("Error loading cities:", err);
+  }
+}
   async function editRoomType(roomtype) {
     setRoomName(roomtype.roomName);
     setId(roomtype.id);
@@ -93,7 +107,10 @@ function RoomTypeAdmin() {
       setIsAlertVisible(false);
     }, 3000); // Hide the alert after 3 seconds
   }
-
+  function handleSearch(event) {
+    event.preventDefault();
+    load();
+  }
   ///////////////////////////////////////////////////////////////
   return (
     <div
@@ -156,6 +173,24 @@ function RoomTypeAdmin() {
               </form>
             </div>
             <br></br>
+              {/* Search and Sort Controls */}
+              <div className="container mt-4">
+              <form onSubmit={handleSearch}>
+                <div className="form-group">
+                  <label className="label">Search</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                  />
+                </div>
+               
+                <button type="submit" className="btn btn-primary">
+                  Search
+                </button>
+              </form>
+            </div>
 
             {/* Alert Message */}
             {isAlertVisible && (
