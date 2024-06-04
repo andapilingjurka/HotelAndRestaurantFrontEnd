@@ -28,13 +28,16 @@ import StripeForm from "./components/Payment/StripeForm";
 import SendNotification from "./Admin/SendNotification";
 import MainPage from "./components/Main/MainPage";
 // import ReceiveNotification from "./Admin/ReceiveNotification";
+import { AuthProvider } from './components/interceptors/axios';
 
 
 function App() {
   return (
+   
     <Router>
+       <AuthProvider>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/rooms" element={<RoomAdmin />} />
         <Route path="/roomtype" element={<RoomTypeAdmin />} />
         <Route path="/guests" element={<GuestAdmin />} />
@@ -56,7 +59,7 @@ function App() {
       <Route path="/stripe" element={<StripeForm />} />
 
       <Route path="/aboutus" element={<AboutUs />} />
-      <Route path="/mainpage" element={<MainPage />} />
+      <Route path="/" element={<MainPage />} />
      
 
 
@@ -68,7 +71,9 @@ function App() {
 
 
       </Routes>
+      </AuthProvider>
     </Router>
+  
   );
 }
 

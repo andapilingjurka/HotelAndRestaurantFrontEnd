@@ -9,6 +9,8 @@ import "./login.css";
 import login from "./hotel.png";
 import Navbar from '../../include/Nav';
 import Footer from '../../include/Footer';
+import { setTokens, getValidAccessToken, clearTokens, getNameIdentifier,getUserRole } from '../interceptors/authService';  // Updated import
+
 
 
 // import MyNavbar from "../include/Navbar";
@@ -33,17 +35,19 @@ function LoginForm() {
         }
       );
 
-      const { token } = response.data;
-      localStorage.setItem("token", token);
-
-      const role = decodeToken(token).role;
-      setMessage("Login successful");
-
-      if (role === "admin") {
-        navigate("/dashboard");
-      } else if (role === "client") {
-        navigate("/usermenu");
+      const { accessToken, refreshToken } = response.data;
+      setTokens(accessToken, refreshToken);
+      const accessTokenDecoded = await getValidAccessToken();
+      if(accessTokenDecoded){
+      const nameId = getNameIdentifier(accessTokenDecoded);
+      const role = getUserRole(accessTokenDecoded);
+        console.log("ID E EASDAS"+nameId);
+      if (role === 'admin') {
+        navigate('/dashboard');
+      } else {
+        navigate('/');
       }
+    }
     } catch (error) {
       console.error(error.response.data);
       alert("Emaili ose Fjalekalimi gabim!");

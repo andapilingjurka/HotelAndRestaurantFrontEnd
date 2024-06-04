@@ -4,11 +4,12 @@ import { Container, Row, Col } from 'reactstrap';
 import RoomItem from './RoomItem';
 import Navbar from '../include/Nav';
 import Footer from '../include/Footer';
+import { useAuthRedirect } from '../components/interceptors/tokenService';
 
 
 function Home() {
     const [roomData, setRoomData] = useState([]);
-
+    useAuthRedirect();
     useEffect(() => {
         const fetchData = async () => {
             try {

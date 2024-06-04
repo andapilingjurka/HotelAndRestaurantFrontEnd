@@ -4,13 +4,17 @@ import React, { useState, useEffect } from "react";
 import { FaBed } from "react-icons/fa";
 import chart from "../images/chart.png";
 import chartsecond from "../images/chart2.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 
 import "./style.css";
+import { getUserRole, getValidAccessToken } from "../components/interceptors/authService";
+import { useAuthRedirectByRoleAdmin } from "../components/interceptors/tokenService";
 
 function Dashboard() {
-  const [toggle, setToggle] = useState(true);
+  useAuthRedirectByRoleAdmin();
   const navigate = useNavigate();
+  const [toggle, setToggle] = useState(true);
+  
 
   const Toggle = () => {
     setToggle(!toggle);

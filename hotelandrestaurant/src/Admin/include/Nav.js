@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { decodeToken } from "../../components/LoginRegister/jwtUtils";
+import LogoutButton from '../../components/LoginRegister/LogoutButton';
 
 function Nav({ Toggle }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    navigate("/");
-  };
-  const token = localStorage.getItem("token");
+
+  const token = localStorage.getItem("accessToken");
   const decodedToken = decodeToken(token);
-  const isAdmin = decodedToken && decodedToken.role === "admin";
+ const isAdmin = decodedToken && decodedToken.role === "admin";
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-transparent bg-white">
       <i className="bi bi-justify-left fs-4 navbar-brand" onClick={Toggle}></i>
@@ -32,17 +29,15 @@ function Nav({ Toggle }) {
           </Link>
         )}
 
-        {localStorage.getItem("token") ? (
-          <>
-            <button onClick={handleLogout} className="nav-link">
-              Logout
-            </button>
-          </>
-        ) : (
-          <Link to="/login" className="nav-link">
-            Login
-          </Link>
-        )}
+{localStorage.getItem('accessToken') ? (
+            <>
+              <LogoutButton /> 
+            </>
+          ) : (
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
+          )}
       </div>
     </nav>
   );

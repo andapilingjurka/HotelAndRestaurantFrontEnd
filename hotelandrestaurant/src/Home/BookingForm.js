@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { decodeToken } from '../components/LoginRegister/jwtUtils';
 import StripeForm from '../components/Payment/StripeForm';
 import Navbar from '../include/Nav';
+import { getNameIdentifier } from "../components/interceptors/authService";
 
 const BookingForm = ({ id, price }) => {
   const submitHandler = (event) => {
@@ -22,17 +23,15 @@ const BookingForm = ({ id, price }) => {
   const [bookedDates, setBookedDates] = useState([]);
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('accessToken');
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState(""); // New state for payment method
   let idktu;
   if (token) {
-    idktu = decodeToken(token).nameid;
+    idktu = getNameIdentifier(token);
   }
- 
-
-  // setUserId(idktu)
+   // setUserId(idktu)
   const isReservationValid = (pickUpDate, dropOffDate, bookedDates) => {
     let start = new Date(pickUpDate);
     let end = new Date(dropOffDate);
