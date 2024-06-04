@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './stripe.css';
 import paypal from './paypal.jpg'; // Import your image file
-import { useLocation } from 'react-router-dom';
 
-const StripeForm = ({ onSuccess }) => {
+const StripeForm = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { total, description } = location.state || {};
 
   const [paymentData, setPaymentData] = useState({
@@ -32,6 +33,19 @@ const StripeForm = ({ onSuccess }) => {
     setPaymentData({ ...paymentData, [name]: value });
   };
 
+  const clearForm = () => {
+    setPaymentData({
+      cardNumber: '',
+      expirationMonth: '',
+      expirationYear: '',
+      cvc: '',
+      email: '',
+      currency: 'USD',
+      description: description ? description.toString() : '',
+      amount: total ? total.toString() : '',
+    });
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,7 +59,9 @@ const StripeForm = ({ onSuccess }) => {
       });
 
       if (response.ok) {
-        onSuccess();
+        alert('Payment successful! Thank you for your booking.');
+        clearForm();
+        navigate('/home'); // Redirect to home or any other page
       } else {
         console.error('Payment failed:', response.statusText);
       }
@@ -55,8 +71,8 @@ const StripeForm = ({ onSuccess }) => {
   };
 
   return (
-    <div> 
-      <form onSubmit={handleFormSubmit} className="payment-container mt-5 ">
+    <div>
+      <form onSubmit={handleFormSubmit} className="payment-container mt-5">
         <img src={paypal} className="img-fluid" style={{ width: '75%' }} alt="Featured" />
 
         <div className="row">
@@ -66,6 +82,7 @@ const StripeForm = ({ onSuccess }) => {
               type="text"
               name="email"
               className="form-control"
+              value={paymentData.email}
               onChange={handleInputChange}
             />
           </div>
@@ -77,6 +94,7 @@ const StripeForm = ({ onSuccess }) => {
                 type="text"
                 name="cardNumber"
                 className="form-control"
+                value={paymentData.cardNumber}
                 onChange={handleInputChange}
               />
               <label className="input-group-text">Card Number</label>
@@ -89,6 +107,7 @@ const StripeForm = ({ onSuccess }) => {
               type="number"
               name="expirationMonth"
               className="form-control"
+              value={paymentData.expirationMonth}
               onChange={handleInputChange}
               min="1"
               max="12"
@@ -101,6 +120,7 @@ const StripeForm = ({ onSuccess }) => {
               type="number"
               name="expirationYear"
               className="form-control"
+              value={paymentData.expirationYear}
               onChange={handleInputChange}
               min={new Date().getFullYear()}
               max={new Date().getFullYear() + 5}
@@ -113,6 +133,7 @@ const StripeForm = ({ onSuccess }) => {
               type="text"
               name="cvc"
               className="form-control"
+              value={paymentData.cvc}
               onChange={handleInputChange}
             />
           </div>

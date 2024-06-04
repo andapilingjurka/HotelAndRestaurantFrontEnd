@@ -188,8 +188,8 @@ const BookingForm = ({ id, price }) => {
   };
   const handlePaymentSuccess = async () => {
     
-    alert('Payment successful! Thank you for your booking.');
-    setPaymentSuccess(true);
+   // alert('Payment successful! Thank you for your booking.');
+   // setPaymentSuccess(true);
     // Handle post-payment success actions here (e.g., navigate to confirmation page)
 
     try {
