@@ -12,7 +12,7 @@ const LogoutButton = () => {
     };
 
     return (
-        <Button variant="outline-danger" onClick={handleLogout}>
+        <Button variant=""  onClick={handleLogout} style={{ color: 'white', marginTop: '-7px' }}>
             Logout
         </Button>
     );
