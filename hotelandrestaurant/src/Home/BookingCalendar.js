@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import Navbar from '../include/Nav';
 
 function BookingCalendar({ roomId }) {
     const [startDate, setStartDate] = useState('');
@@ -74,6 +75,7 @@ function BookingCalendar({ roomId }) {
                 <DatePicker selected={endDate} onChange={setEndDate} />
             </div> */}
              {/* <button onClick={handleReservationAttempt}>Book Now</button> */}
+             <Navbar/>
             <h3>Select a Date</h3>
             <DatePicker
                 selected={startDate}

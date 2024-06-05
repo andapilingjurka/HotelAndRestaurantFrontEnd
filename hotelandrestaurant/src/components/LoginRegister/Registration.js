@@ -55,13 +55,14 @@ function Registration() {
 
     try {
       const response = await axios.post(
+        
         "https://localhost:7264/api/Users/Register",
         {
           FirstName: FirstName.trim(),
           Email: Email.trim(),
           Password: Password.trim(),
           LastName: LastName.trim(),
-          roleId: 5,
+          roleId: 2,
         }
       );
 

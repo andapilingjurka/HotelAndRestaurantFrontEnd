@@ -22,9 +22,9 @@ const RoomItem = ({props}) => {
           </h6>
 
           <div className="room__item-info d-flex align-items-center justify-content-between mt-3 mb-4">
-            <span className=" d-flex align-items-center gap-1">
+            {/* <span className=" d-flex align-items-center gap-1">
               <i class="ri-car-line"></i> {props.status}
-            </span>
+            </span> */}
             <span className=" d-flex align-items-center gap-1">
               <i class="ri-settings-2-line"></i> {props.description}
             </span>

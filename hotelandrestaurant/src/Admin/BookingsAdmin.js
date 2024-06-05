@@ -198,6 +198,25 @@ function BookingsAdmin() {
     event.preventDefault();
     load();
   }
+  const exportToExcel = async () => {
+    try {
+      const response = await axios.get(
+        "https://localhost:7264/api/Bookings/ExportToExcel",
+        { responseType: "blob" } // Important for downloading files
+      );
+
+      // Create a link element, use it to download the file
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "bookings.xlsx"); // or any other extension
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.error("Error exporting to Excel:", err);
+    }
+  };
   return (
     <div
       className="container-fluid"
@@ -221,7 +240,7 @@ function BookingsAdmin() {
           <div>
             <h4 className="description">Të dhënat për Rezervime</h4>
             <div className="container mt-4">
-              <form>
+              {/* <form>
                 <div className="form-group">
                   <input
                     type="text"
@@ -366,7 +385,7 @@ function BookingsAdmin() {
                     Update
                   </button>
                 </div>
-              </form>
+              </form> */}
             </div>
             <br></br>
             
@@ -401,6 +420,12 @@ function BookingsAdmin() {
               </div>
             )}
             <div className="table-responsive m-3">
+            <button
+            className="btn btn-secondary m-4 button "
+            onClick={exportToExcel}
+          >
+            Export to Excel
+          </button>
               <table className="table border-gray">
                 <thead>
                   <tr>
@@ -413,6 +438,7 @@ function BookingsAdmin() {
                     <th scope="col">RoomID</th>
                     <th scope="col" className="px-3">UserID</th>
                     <th scope="col">Options</th>
+                  
                   </tr>
                 </thead>
                 <tbody>
