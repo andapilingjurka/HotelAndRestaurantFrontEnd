@@ -1,0 +1,35 @@
+.chat-container1 {
+  width: 300px;
+  margin: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.messages {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.user1 {
+  text-align: right;
+  margin: 5px 0;
+}
+
+.bot1 {
+  text-align: left;
+  margin: 5px 0;
+}
+
+.input-container1 {
+  display: flex;
+}
+
+.input-container1 input {
+  flex: 1;
+  padding: 5px;
+}
+
+.input-container1 button {
+  padding: 5px;
+}

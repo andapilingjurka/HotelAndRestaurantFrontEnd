@@ -31,6 +31,8 @@ import MainPage from "./components/Main/MainPage";
 import { AuthProvider } from './components/interceptors/axios';
 import Contact from "./components/Contact/Contact";
 import ContactAdmin from "./Admin/ContactAdmin";
+import Chat from "./components/Chat/Chat";
+
 
 
 function App() {
@@ -66,7 +68,7 @@ function App() {
 
       <Route path="/" element={<MainPage />} />
      
-
+<Route path="/chat" element={<Chat/>}/>
 
 
         <Route path="/rooms/:slug" element={<RoomDetails />} />
