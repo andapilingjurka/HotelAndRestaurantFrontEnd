@@ -9,6 +9,7 @@ const StripeForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { firstName, lastName, pickUpDate, dropOffDate, total, description, idktu, id } = location.state;
+  console.log("FIRS ASF "+ firstName)
   const handlePaymentSuccess = async () => {
     
     // alert('Payment successful! Thank you for your booking.');

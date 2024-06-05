@@ -6,8 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 function Payment() {
     const location = useLocation();
-    const [total, setTotal] = useState(location.state ? location.state.total : ""); // Initialize total from location state
-
+    const { firstName, lastName, pickUpDate, dropOffDate, total, description, idktu, id } = location.state;
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
     const [phone, setPhone] = useState("");
@@ -53,6 +52,34 @@ function Payment() {
         }, 5000);
     };
 
+    const handlePaymentSuccess = async () => {
+    
+        // alert('Payment successful! Thank you for your booking.');
+        // setPaymentSuccess(true);
+         // Handle post-payment success actions here (e.g., navigate to confirmation page)
+            console.log("test UBT")
+         try {
+           const response = await axios.post("https://localhost:7264/api/Bookings/Add", {
+             //qetu e osht per form nuk mundesh me rezervu nese nuk je i bom login
+             name: firstName,
+             lasttName: lastName,
+             checkInDate: pickUpDate,
+             checkOutDate: dropOffDate,
+             roomId: id,
+             toTal: total,
+             userId: idktu,
+           });
+           alert("Rezervimi u be me sukses")
+          //  navigate('/home')
+     
+           
+     
+         } catch (error) {
+           console.error('Error calculating discount:', error);
+         }
+       };
+    
+
     async function handleReservationChange(event) {
         const selectedbookingID = event.target.value;
         const selectedBooking = bookings.find(booking => booking.id === selectedbookingID);
@@ -73,6 +100,7 @@ function Payment() {
             });
             showAndHideAlert("The payment has been successfully registered!");
             clearForm();
+            handlePaymentSuccess();
             // Optionally reload payments or perform any other necessary actions
         } catch (err) {
             showAndHideAlert(`Error: ${err}`, true);

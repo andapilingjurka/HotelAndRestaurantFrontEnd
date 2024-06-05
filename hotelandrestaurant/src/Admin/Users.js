@@ -4,10 +4,11 @@ import Nav from "./include/Nav";
 import Sidebar from "./include/Sidebar";
 import { Link, useNavigate } from 'react-router-dom';
 import { decodeToken } from '../components/LoginRegister/jwtUtils';
+import { useAuthRedirectByRoleAdmin } from "../components/interceptors/tokenService";
 
 
 function Users() {
-  
+  useAuthRedirectByRoleAdmin();
   const [toggle, setToggle] = useState(true);
   const [roleid, setRoleid] = useState("");
   const [email, setEmail] = useState("");

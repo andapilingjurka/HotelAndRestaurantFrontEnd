@@ -73,7 +73,7 @@ const BookingForm = ({ id, price }) => {
   // Handle payment method
 
   if (paymentMethod === "Cash") {
-    navigate('/payment', { state: { total } });
+    navigate('/payment', { state: { ...formData } });
   } else if (paymentMethod === "Stripe") {
     navigate('/stripe', { state: { ...formData } });
   }

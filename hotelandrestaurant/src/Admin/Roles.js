@@ -4,8 +4,11 @@ import "../Admin/style.css";
 import Sidebar from "./include/Sidebar";
 import Nav from "./include/Nav";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthRedirectByRoleAdmin } from "../components/interceptors/tokenService";
 
 function Roles() {
+  useAuthRedirectByRoleAdmin();
+
   const [toggle, setToggle] = useState(true);
 
   const navigate = useNavigate();

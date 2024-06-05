@@ -4,8 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import Nav from "./include/Nav";
 import Sidebar from "./include/Sidebar";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthRedirectByRoleAdmin } from "../components/interceptors/tokenService";
 
 function RoomAdmin() {
+  useAuthRedirectByRoleAdmin();
+
   const [toggle, setToggle] = useState(true);
 
   const navigate = useNavigate();

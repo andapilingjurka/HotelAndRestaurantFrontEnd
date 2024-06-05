@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Nav from "./include/Nav";
 import Sidebar from "./include/Sidebar";
+import { useAuthRedirectByRoleAdmin } from "../components/interceptors/tokenService";
 
 function StafiAdmin() {
+  useAuthRedirectByRoleAdmin();
   const [toggle, setToggle] = useState(true);
   const [stafi, setStafi] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
