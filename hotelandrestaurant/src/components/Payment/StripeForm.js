@@ -3,11 +3,43 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './stripe.css';
 import paypal from './paypal.jpg'; // Import your image file
+import axios from "axios";
 
 const StripeForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { total, description } = location.state || {};
+  const { firstName, lastName, pickUpDate, dropOffDate, total, description, idktu, id } = location.state;
+  const handlePaymentSuccess = async () => {
+    
+    // alert('Payment successful! Thank you for your booking.');
+    // setPaymentSuccess(true);
+     // Handle post-payment success actions here (e.g., navigate to confirmation page)
+ 
+     try {
+       const response = await axios.post("https://localhost:7264/api/Bookings/Add", {
+ 
+         //qetu e osht per form nuk mundesh me rezervu nese nuk je i bom login
+         name: firstName,
+         lasttName: lastName,
+         checkInDate: pickUpDate,
+         checkOutDate: dropOffDate,
+         roomId: id,
+         toTal: total,
+         userId: idktu,
+ 
+ 
+ 
+ 
+       });
+       //alert("Rezervimi u be me sukses")
+      //  navigate('/home')
+ 
+       
+ 
+     } catch (error) {
+       console.error('Error calculating discount:', error);
+     }
+   };
 
   const [paymentData, setPaymentData] = useState({
     cardNumber: '',
@@ -61,6 +93,7 @@ const StripeForm = () => {
       if (response.ok) {
         alert('Payment successful! Thank you for your booking.');
         clearForm();
+        handlePaymentSuccess();
         navigate('/home'); // Redirect to home or any other page
       } else {
         console.error('Payment failed:', response.statusText);

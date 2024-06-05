@@ -7,8 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { decodeToken } from '../components/LoginRegister/jwtUtils';
 import StripeForm from '../components/Payment/StripeForm';
 import { getNameIdentifier } from "../components/interceptors/authService";
+//import { useBookingData } from './BookingContext';
+
 
 const BookingForm = ({ id, price }) => {
+ //const { saveBookingData } = useBookingData();
   const submitHandler = (event) => {
     event.preventDefault();
   };
@@ -49,23 +52,35 @@ const BookingForm = ({ id, price }) => {
     }
     return true; // Valid reservation
   };
+ 
 
   const handleReservationAttempt = () => {
       if (!isReservationValid(pickUpDate, dropOffDate, bookedDates)) {
           alert('Selected dates are not available. Please choose different dates.');
           return;
       }
+      const formData = {
+        firstName,
+        lastName,
+        pickUpDate,
+        dropOffDate,
+        total,
+        description,
+         idktu, 
+         id
+    };
 
   // Handle payment method
+
   if (paymentMethod === "Cash") {
     navigate('/payment', { state: { total } });
   } else if (paymentMethod === "Stripe") {
-    navigate('/stripe', { state: { total, description } });
+    navigate('/stripe', { state: { ...formData } });
   }
-
 
       // Proceed with making the reservation
       console.log('Reservation is valid, proceed with booking.');
+   
       // Additional steps to submit the booking can be implemented here
   };
     

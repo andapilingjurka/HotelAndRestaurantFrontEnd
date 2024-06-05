@@ -68,7 +68,7 @@ function App() {
         <Route path="/send-notification" element={<SendNotification/>} />
         {/* <Route path="/receive-notification" element={<ReceiveNotification/>} /> */}
         <Route path="/home" element={<Home />} />
-
+        
 
       </Routes>
       </AuthProvider>
