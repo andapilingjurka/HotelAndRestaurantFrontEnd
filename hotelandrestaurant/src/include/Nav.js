@@ -23,7 +23,7 @@ const Navbar = () => {
         <li className="navbar-item">
           <Link to="/home" className="navbar-link">Rooms</Link>
         </li>
-        {localStorage.getItem('accessToken') ? (
+        {/* {localStorage.getItem('accessToken') ? (
             <>
               <LogoutButton /> 
             </>
@@ -41,7 +41,25 @@ const Navbar = () => {
             </Link>
           </li>
             
-          )}
+          )} */}
+          {localStorage.getItem('accessToken') ? (
+  <>
+    {role === 'admin' && (
+      <li className="navbar-item">
+        <Link to="/dashboard" className="navbar-link">
+          Dashboard
+        </Link>
+      </li>
+    )}
+    <LogoutButton />
+  </>
+) : (
+  <li className="navbar-item">
+    <Link to="/login" className="navbar-link">
+      Login
+    </Link>
+  </li>
+)}
       </ul>
     </nav>
   );

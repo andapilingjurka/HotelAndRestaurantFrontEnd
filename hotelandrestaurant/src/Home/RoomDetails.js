@@ -4,7 +4,8 @@ import { useParams, useLocation } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import BookingForm from './BookingForm';
 import BookingCalendar from './BookingCalendar';
-
+import Navbar from '../include/Nav';
+import Footer from '../include/Footer';
 // import PaymentMethod from '../components/UI/PaymentMethod';
 import { useNavigate } from 'react-router-dom';
 const RoomDetails = () => {
@@ -56,63 +57,65 @@ const RoomDetails = () => {
   return (
     <div>
       <section>
+         <Navbar />
+          
         <Container>
           <Row>
-            <Col lg="6">
+            {/* <Col lg="6"> */}
               
-            {singleRoomItem && singleRoomItem.image ? (
+                     {singleRoomItem && singleRoomItem.image ? (
                 <img src={singleRoomItem.image} alt="Car" className="w-100" />
               ) : (
                 <p>No image available</p>
-              )}            </Col>
+              )} 
 
-            <Col lg="6">
+            {/* <Col lg="6"> */}
               {singleRoomItem && (
                 <div className="room__info">
-                  <h2 className="section__title">{singleRoomItem.roomNumber}</h2>
+                  {/* <h2 className="section__title">{singleRoomItem.roomNumber}</h2> */}
 
-                  <div className=" d-flex align-items-center gap-5 mb-4 mt-3">
-                    <h6 className="fw-bold fs-4">${singleRoomItem.price}.00 / Day</h6>
+                  {/* <div className=" d-flex align-items-center gap-5 mb-4 mt-3"> */}
+                    {/* <h6 className="fw-bold fs-4">${singleRoomItem.price}.00 / Day</h6> */}
 
-                    <span className=" d-flex align-items-center gap-2">
+                    {/* <span className=" d-flex align-items-center gap-2">
                       <span style={{ color: '#f9a826' }}>
                         <i class="ri-star-s-fill"></i>
                         <i class="ri-star-s-fill"></i>
-                        <i class="ri-star-s-fill"></i>
-                        <i class="ri-star-s-fill"></i>
-                        <i class="ri-star-s-fill"></i>
+                      
                       </span>
                       
-                    </span>
+                    </span> */}
                     
-                  </div>
+                  {/* </div> */}
 
-                  <p className="section__description">{singleRoomItem.description}</p>
+                  {/* <p className="section__description">{singleRoomItem.description}</p> */}
+
+                  <h5 className="mb-4 fw-bold" style={{ fontSize: '40px' }}>Booking Information</h5>
 
                  
                   
                 </div>
               )}
-            </Col>
+            
 
-            <Col lg="7" className="mt-5">
+            <Col lg="7" className="mt-1">
               {singleRoomItem && (
-                <div className="booking-info mt-5">
-                  <h5 className="mb-4 fw-bold ">Booking Information</h5>
+                <div className="booking-info mt-2 mr-5">
                   <BookingForm id={id} price={singleRoomItem.price} />
                 </div>
               )}
             </Col>
 
-            <Col lg="5" className="mt-5">
-              <div className="payment__info mt-5">
-                <h5 className="mb-4 fw-bold ">Payment Information</h5>
+            <Col lg="5" className="mt-1">
+              <div className="payment__info mt-5 ms-2">
+                {/* <h5 className="mb-4 fw-bold ">Payment Information</h5> */}
                 {/* <PaymentMethod /> */}
                 <BookingCalendar roomId={id} /> 
               </div>
             </Col>
           </Row>
         </Container>
+        <Footer/>
       </section>
     </div>
   );

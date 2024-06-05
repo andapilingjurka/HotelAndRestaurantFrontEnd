@@ -75,9 +75,9 @@ function BookingCalendar({ roomId }) {
                 <DatePicker selected={endDate} onChange={setEndDate} />
             </div> */}
              {/* <button onClick={handleReservationAttempt}>Book Now</button> */}
-             <Navbar/>
-            <h3>Select a Date</h3>
-            <DatePicker
+             {/* <Navbar/> */}
+            {/* <h3 className='mt-2'>Select a Date</h3> */}
+            <DatePicker className='ms-5'
                 selected={startDate}
                 onChange={date => setStartDate(date)}
                 highlightDates={[{

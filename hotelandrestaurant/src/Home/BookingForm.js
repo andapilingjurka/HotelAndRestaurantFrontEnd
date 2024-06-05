@@ -6,7 +6,6 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { decodeToken } from '../components/LoginRegister/jwtUtils';
 import StripeForm from '../components/Payment/StripeForm';
-import Navbar from '../include/Nav';
 import { getNameIdentifier } from "../components/interceptors/authService";
 
 const BookingForm = ({ id, price }) => {
@@ -220,7 +219,7 @@ const BookingForm = ({ id, price }) => {
 
   return (
     <div>
-    <Navbar />
+    {/* <Navbar /> */}
     {!showPaymentForm && !paymentSuccess && (
       <Form onSubmit={submitHandler}>
         <FormGroup className="booking__form d-inline-block me-4 mb-4">
@@ -284,12 +283,12 @@ const BookingForm = ({ id, price }) => {
           <input type="text" placeholder="id" defaultValue={id} hidden />
         </FormGroup>
         <FormGroup className="booking__form d-inline-block me-4 mb-4">
-          <input type="text" placeholder="id" defaultValue={id} />
+          <input type="text" hidden placeholder="id" defaultValue={id} />
         </FormGroup>
       
         <FormGroup>
           <textarea
-            rows={5}
+            rows={3}
             type="textarea"
             className="textarea"
             placeholder="Write"
@@ -297,7 +296,7 @@ const BookingForm = ({ id, price }) => {
             onChange={(e) => setdescription(e.target.value)}
           ></textarea>
         </FormGroup>
-        <button onClick={handleReservationAttempt}>Book Now</button>
+        <button className="mb-4 btn btn-success" onClick={handleReservationAttempt}>Book Now</button>
       </Form>
     )}
   </div>
