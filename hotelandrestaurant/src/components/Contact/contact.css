@@ -1,0 +1,83 @@
+.container-full {
+    width: 85%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-right: 8px;
+    padding-left: 15px;
+
+  
+  }
+  
+  .card {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-right: 50%;
+
+
+   
+  }
+  .img-fluid{
+    padding-top: 10px;
+    width: 200%;
+    max-width: 820px;
+  }
+  .card-header,
+  .card-body {
+    padding: 38px;
+  }
+  
+  .form-group {
+    margin-bottom: 25px;
+    
+  }
+ 
+  .input-group {
+    width: 100%;
+  }
+  
+  textarea {
+    height: 200px;
+  }
+  
+  .btn-block {
+    width: 100%;
+  }
+  
+  /* Style for the user icon */
+  .input-group-prepend .input-group-text i.fa-user {
+    font-size: 1.2em; 
+  }
+  
+  /* Style for the email icon */
+  .input-group-prepend .input-group-text i.fa-envelope {
+    font-size: 1.2em; 
+  }
+  
+  /* Style for the comment icon */
+  .input-group-prepend .input-group-text i.fa-comment {
+    font-size: 1.2em; 
+  }
+  
+  .gray-background {
+    background-color: #9ba6a5; /* ngjyra gri e lehtë */
+  }
+  
+  .gray-text {
+    color: #6c757d; /* ngjyra gri për tekstin */
+  }
+  
+  .input-group-text-gray {
+    background-color: #e9ecef; /* ngjyra gri për sfondin e input group */
+    color: #6c757d; /* ngjyra gri për ikonat */
+  }
+  
+  .btn-gray {
+    background-color: #6c757d; /* ngjyra gri për butonin */
+    color: #ffffff; /* ngjyra e bardhë për tekstin e butonit */
+  }
+  
+  .btn-gray:hover {
+    background-color: #5a6268; /* ngjyra gri më e errët për butonin kur është hover */
+    color: #ffffff;
+  }

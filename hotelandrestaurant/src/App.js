@@ -29,6 +29,8 @@ import SendNotification from "./Admin/SendNotification";
 import MainPage from "./components/Main/MainPage";
 // import ReceiveNotification from "./Admin/ReceiveNotification";
 import { AuthProvider } from './components/interceptors/axios';
+import Contact from "./components/Contact/Contact";
+import ContactAdmin from "./Admin/ContactAdmin";
 
 
 function App() {
@@ -57,8 +59,11 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/payment" element={<PaymentForm />} />
       <Route path="/stripe" element={<StripeForm />} />
-
       <Route path="/aboutus" element={<AboutUs />} />
+      <Route path="/contactAdmin" element={<ContactAdmin />} />
+
+      <Route path="/contact" element={<Contact />} />
+
       <Route path="/" element={<MainPage />} />
      
 

@@ -23,6 +23,9 @@ const Navbar = () => {
         <li className="navbar-item">
           <Link to="/home" className="navbar-link">Rooms</Link>
         </li>
+        <li className="navbar-item">
+          <Link to="/contact" className="navbar-link">Contact</Link>
+        </li>
         {/* {localStorage.getItem('accessToken') ? (
             <>
               <LogoutButton /> 
